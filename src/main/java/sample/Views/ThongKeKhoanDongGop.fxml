@@ -8,18 +8,17 @@
     <top>
         <VBox spacing="10">
     <!-- Main Menu Bar -->
-    <HBox fx:id="menuBar" spacing="10" alignment="CENTER_LEFT" style="-fx-border-color: black; -fx-border-width: 2;">
-        <Button fx:id="btnHome" text="Trang chủ" />
-        <Button fx:id="btnCanHo" text="Căn hộ" />
-        <Button fx:id="btnCuDan" text="Cư dân" />
-        <Button fx:id="btnKhoanThu" text="Khoản thu" />
-        <Button fx:id="btnThongKe" text="Thống kê" />
-        <Button fx:id="btnCaiDat" text="Cài đặt" />
-        <Region HBox.hgrow="ALWAYS" />
-        <TextField fx:id="searchField" promptText="Tìm kiếm" prefWidth="200" onAction="#onSearch" />
-        <Button fx:id="btnSearch" text="🔍" onAction="#onSearch" />
-        <Button fx:id="btnClearSearch" text="✕" onAction="#onClearSearch" />
-    </HBox>
+    <HBox fx:id="menuBar" spacing="0" alignment="CENTER_LEFT" style="-fx-border-color: #999; -fx-border-width: 0 0 2 0; -fx-background-color: #f5f5f5;">
+    <Button fx:id="btnHome" text="Trang chủ" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 18; -fx-font-size: 14px; -fx-text-fill: #222;" />
+    <Button fx:id="btnCanHo" text="Căn hộ" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 18; -fx-font-size: 14px; -fx-text-fill: #222;" />
+    <Button fx:id="btnCuDan" text="Cư dân" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 18; -fx-font-size: 14px; -fx-text-fill: #222;" />
+    <Button fx:id="btnKhoanThu" text="Khoản thu" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 18; -fx-font-size: 14px; -fx-text-fill: #222;" />
+    <Button fx:id="btnThongKe" text="Thống kê" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 18; -fx-font-size: 14px; -fx-text-fill: #222;" />
+    <Region HBox.hgrow="ALWAYS" />
+    <TextField fx:id="searchField" promptText="Tìm kiếm..." prefWidth="200" onAction="#onSearch" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #fff; -fx-border-color: #ccc;" />
+    <Button fx:id="btnSearch" text="🔍" onAction="#onSearch" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 10;" />
+    <Button fx:id="btnClearSearch" text="✕" onAction="#onClearSearch" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 8 10;" />
+</HBox>
 </VBox>
     </top>
 
