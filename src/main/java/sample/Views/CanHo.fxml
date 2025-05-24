@@ -2,89 +2,66 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
 
 <BorderPane prefHeight="600.0" prefWidth="1000.0"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.java.sample.Controller.">
+            fx:controller="main.java.sample.Controller.CanHoController">
 
-    <!-- Top: Navigation (same template) -->
+    <!-- Top: Navigation -->
     <top>
         <HBox spacing="20">
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
             <children>
-                <Label prefWidth="80" text="Trang chủ">
-                    <HBox.margin><Insets top="5"/></HBox.margin>
-                </Label>
-                <Label prefWidth="80" text="Căn hộ">
-                    <HBox.margin><Insets top="5"/></HBox.margin>
-                </Label>
-                <Label prefWidth="80" text="Cư dân">
-                    <HBox.margin><Insets top="5"/></HBox.margin>
-                </Label>
-                <Label prefWidth="80" text="Khoản thu">
-                    <HBox.margin><Insets top="5"/></HBox.margin>
-                </Label>
-                <Label prefWidth="80" text="Thống kê">
-                    <HBox.margin><Insets top="5"/></HBox.margin>
-                </Label>
-                <Label prefWidth="80" text="Cài đặt">
-                    <HBox.margin><Insets top="5"/></HBox.margin>
-                </Label>
-                <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
-                    <HBox.margin><Insets left="120"/></HBox.margin>
-                </TextField>
+                <Label prefWidth="80" text="Trang chủ"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Căn hộ"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Cư dân"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Khoản thu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Thống kê"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Cài đặt"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm..."><HBox.margin><Insets left="120"/></HBox.margin></TextField>
             </children>
         </HBox>
     </top>
 
-    <!-- Center: Apartment CRUD -->
+    <!-- Center: Apartment List -->
     <center>
         <VBox spacing="10">
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
 
-            <!-- Search / Refresh -->
+            <!-- Search / Actions -->
             <HBox spacing="10">
                 <TextField fx:id="txtSearch" promptText="Tìm kiếm căn hộ..."/>
                 <Button text="Tìm" onAction="#onSearch"/>
                 <Button text="Tải lại" onAction="#onRefresh"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Thêm" onAction="#onAdd" prefWidth="100"/>
             </HBox>
 
-            <!-- Apartments Table -->
-            <TableView fx:id="tableApartments" prefWidth="970" prefHeight="400">
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
-                    <TableColumn fx:id="colNumber" text="Số căn hộ" prefWidth="120"/>
-                    <TableColumn fx:id="colFloor" text="Tầng" prefWidth="80"/>
-                    <TableColumn fx:id="colOwner" text="Chủ hộ" prefWidth="200"/>
-                    <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="120"/>
-                </columns>
-            </TableView>
+            <!-- Header Labels -->
+            <HBox spacing="10">
+                <Label text="ID" prefWidth="80"/>
+                <Label text="Số căn hộ" prefWidth="120"/>
+                <Label text="Tầng" prefWidth="80"/>
+                <Label text="Chủ hộ" prefWidth="200"/>
+                <Label text="Trạng thái" prefWidth="120"/>
+                <Label text="Sửa" prefWidth="80"/>
+                <Label text="Xóa" prefWidth="80"/>
+            </HBox>
+
+            <!-- Container for dynamic apartment rows -->
+            <VBox fx:id="vboxApartments" spacing="8"/>
         </VBox>
     </center>
-
-    <!-- Bottom: CRUD Buttons -->
-    <bottom>
-        <HBox alignment="CENTER" spacing="15">
-            <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
-            </padding>
-            <Button text="Thêm" onAction="#onAdd" prefWidth="100"/>
-            <Button text="Sửa" onAction="#onEdit" prefWidth="100"/>
-            <Button text="Xóa" onAction="#onDelete" prefWidth="100"/>
-        </HBox>
-    </bottom>
 
 </BorderPane>
