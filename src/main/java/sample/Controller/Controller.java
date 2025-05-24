@@ -1,4 +1,4 @@
-package main.java.sample.backend;
+package main.java.sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

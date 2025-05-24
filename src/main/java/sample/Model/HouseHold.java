@@ -1,4 +1,4 @@
-package main.java.sample.backend.entity;
+package main.java.sample.Model;
 
 public class HouseHold {
     private int household_id;
