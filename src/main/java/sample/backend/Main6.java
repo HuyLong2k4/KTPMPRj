@@ -1,4 +1,4 @@
-package main.java.sample.event;
+package main.java.sample.backend;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main6 extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(this.getClass().getResource("main6.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("main6.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Nhập chiều cao");

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.backend.controller.HomePage">
+
+   <!-- Top: Navigation -->
+   <top>
+      <HBox spacing="20">
+         <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+         </padding>
+         <children>
+            <Label prefHeight="18.0" prefWidth="80.0" text="Trang chủ">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <Label prefHeight="18.0" prefWidth="80.0" text="Căn hộ">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <Label prefWidth="80.0" text="Cư dân">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <Label prefWidth="80.0" text="Khoản thu">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <Label prefWidth="80.0" text="Thống kê">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <Label prefWidth="80.0" text="Cài đặt">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <TextField prefWidth="200" promptText="Tìm kiếm...">
+               <HBox.margin>
+                  <Insets left="120.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+   </top>
+
+   <!-- Center -->
+   <center>
+      <VBox spacing="20">
+         <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+         </padding>
+
+         <!-- Summary Section -->
+         <HBox prefHeight="146.0" prefWidth="970.0" spacing="20">
+            <VBox prefHeight="93.0" prefWidth="200.0" spacing="5" style="-fx-border-color: black;">
+               <padding>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+               </padding>
+               <Label text="Căn hộ" />
+               <Label text="Tổng số: 10" />
+               <Button text="Xem tất cả" />
+               <HBox.margin>
+                  <Insets right="80.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefWidth="200.0" spacing="5" style="-fx-border-color: black;">
+               <padding>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+               </padding>
+               <Label text="Cư dân" />
+               <Label text="Tổng số: 20" />
+               <Button text="Xem tất cả" />
+               <HBox.margin>
+                  <Insets right="80.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefWidth="200.0" spacing="5" style="-fx-border-color: black;">
+               <padding>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+               </padding>
+               <Label text="Khoản thu" />
+               <Label text="Tổng số: 30" />
+               <Button text="Xem tất cả" />
+            </VBox>
+         </HBox>
+
+         <!-- Chart Section -->
+         <HBox spacing="20">
+            <!-- Biểu đồ -->
+            <VBox prefHeight="374.0" prefWidth="630.0" spacing="10">
+               <Label text="Lịch sử thu phí" />
+               <LineChart title="Payment History">
+                  <xAxis>
+                     <CategoryAxis label="Tháng" />
+                  </xAxis>
+                  <yAxis>
+                     <NumberAxis label="Số tiền" />
+                  </yAxis>
+               </LineChart>
+            </VBox>
+
+            <!-- Thông tin cập nhật -->
+            <VBox spacing="10" style="-fx-border-color: gray;">
+               <padding>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+               </padding>
+               <Label text="Khoản thu mới cập nhật" />
+               <Label text="Khoản thu 1: 500.000đ" />
+               <Label text="Khoản thu 2: 750.000đ" />
+               <Label text="Khoản thu 3: 1.000.000đ" />
+               <Separator />
+               <Label text="Biến động dân cư" />
+               <Label text="Căn hộ A1: -1" />
+               <Label text="Căn hộ B2: +2" />
+            </VBox>
+         </HBox>
+      </VBox>
+   </center>
+
+   <!-- Bottom Buttons -->
+   <bottom>
+      <HBox alignment="CENTER" spacing="15">
+         <padding>
+            <Insets bottom="15" left="15" right="15" top="15" />
+         </padding>
+         <Button prefWidth="150" text="Tạo khoản thu" />
+         <Button prefWidth="150" text="Thu phí" />
+         <Button prefWidth="150" text="Xuất báo cáo" />
+      </HBox>
+   </bottom>
+
+</BorderPane>
