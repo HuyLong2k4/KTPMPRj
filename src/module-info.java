@@ -4,6 +4,7 @@ module KTPMProject {
     requires java.desktop;
     exports main.java.sample.Controller;
 
-    opens main.java.sample.MainApp to javafx.fxml; // Cho phép FXML load controller
+    opens main.java.sample.Controller to javafx.fxml;
     exports main.java.sample.MainApp;
+    exports main.java.sample;
 }
