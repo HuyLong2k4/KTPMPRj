@@ -64,6 +64,7 @@
             <!-- Header Labels -->
             <HBox spacing="10">
                 <Label text="ID" prefWidth="80"/>
+                <Label text="Mã hộ" prefWidth="100"/>
                 <Label text="Tên khoản thu" prefWidth="200"/>
                 <Label text="Loại" prefWidth="120"/>
                 <Label text="Số tiền" prefWidth="120"/>
