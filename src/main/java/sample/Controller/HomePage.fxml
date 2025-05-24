@@ -41,11 +41,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Cài đặt">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <TextField prefWidth="200" promptText="Tìm kiếm...">
+            <TextField prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
                <HBox.margin>
                   <Insets left="120.0" />
                </HBox.margin></TextField>
