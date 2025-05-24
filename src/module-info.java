@@ -5,6 +5,7 @@ module KTPMProject {
     exports main.java.sample.Controller;
 
     opens main.java.sample.Controller to javafx.fxml;
+    opens main.java.sample to javafx.fxml;
     exports main.java.sample.MainApp;
     exports main.java.sample;
 }
