@@ -21,12 +21,8 @@
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
             <children>
-                <Label prefWidth="80" text="Trang chủ"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Căn hộ"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Cư dân"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Khoản thu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Thống kê"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Cài đặt"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Trang chủ"/><Label prefWidth="80" text="Căn hộ"/><Label prefWidth="80" text="Cư dân"/>
+                <Label prefWidth="80" text="Khoản thu"/><Label prefWidth="80" text="Thống kê"/><Label prefWidth="80" text="Cài đặt"/>
                 <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
                     <HBox.margin><Insets left="120"/></HBox.margin>
                 </TextField>
@@ -34,14 +30,14 @@
         </HBox>
     </top>
 
-    <!-- Center: Resident List -->
+    <!-- Center: Danh sách cư dân -->
     <center>
         <VBox spacing="10">
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
 
-            <!-- Search / Actions -->
+            <!-- Tìm kiếm / Thêm -->
             <HBox spacing="10">
                 <TextField fx:id="txtSearch" promptText="Tìm kiếm cư dân..."/>
                 <Button text="Tìm" onAction="#onSearch"/>
@@ -50,19 +46,29 @@
                 <Button text="Thêm" onAction="#onAdd" prefWidth="100"/>
             </HBox>
 
-            <!-- Header Labels -->
+            <!-- Tiêu đề cột -->
             <HBox spacing="10">
                 <Label text="ID" prefWidth="80"/>
-                <Label text="Họ tên" prefWidth="200"/>
-                <Label text="Căn hộ" prefWidth="120"/>
-                <Label text="Điện thoại" prefWidth="150"/>
-                <Label text="Email" prefWidth="200"/>
+                <Label text="Mã hộ" prefWidth="100"/>
+                <Label text="CMND" prefWidth="120"/>
+                <Label text="SĐT" prefWidth="100"/>
+                <Label text="Họ tên" prefWidth="150"/>
+                <Label text="Giới tính" prefWidth="80"/>
+                <Label text="Quan hệ" prefWidth="100"/>
+                <Label text="Ngày sinh" prefWidth="120"/>
+                <Label text="Nơi sinh" prefWidth="120"/>
+                <Label text="Nghề nghiệp" prefWidth="120"/>
+                <Label text="Nơi làm việc" prefWidth="120"/>
+                <Label text="Dân tộc" prefWidth="100"/>
+                <Label text="Tôn giáo" prefWidth="100"/>
+                <Label text="Tạm vắng" prefWidth="100"/>
+                <Label text="Tạm trú" prefWidth="100"/>
                 <Label text="Sửa" prefWidth="80"/>
                 <Label text="Xóa" prefWidth="80"/>
             </HBox>
 
             <!-- Container for dynamic resident rows -->
-            <VBox fx:id="vboxResidents" spacing="8" />
+            <VBox fx:id="vboxResidents" spacing="8"/>
         </VBox>
     </center>
 
