@@ -14,4 +14,20 @@ public class Household {
         this.area = new SimpleDoubleProperty(area);
         this.ownedBy = new SimpleIntegerProperty(ownedBy);
     }
+
+    public int getHouseholdId() { return householdId.get(); }
+    public void setHouseholdId(int value) { householdId.set(value); }
+    public IntegerProperty householdIdProperty() { return householdId; }
+
+    public String getRoomNumber() { return roomNumber.get(); }
+    public void setRoomNumber(String value) { roomNumber.set(value); }
+    public StringProperty roomNumberProperty() { return roomNumber; }
+
+    public double getArea() { return area.get(); }
+    public void setArea(double value) { area.set(value); }
+    public DoubleProperty areaProperty() { return area; }
+
+    public int getOwnedBy() { return ownedBy.get(); }
+    public void setOwnedBy(int value) { ownedBy.set(value); }
+    public IntegerProperty ownedByProperty() { return ownedBy; }
 }
