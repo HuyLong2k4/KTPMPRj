@@ -1,11 +1,19 @@
 package main.java.sample.Model;
 
-import java.time.LocalDate;
+import javafx.beans.property.*;
 
 public class TemporaryResidence {
-    private int id;
-    private LocalDate startAt;
-    private LocalDate endAt;
-    private int tempResidentId;
-    private String reason;
+    private IntegerProperty temporaryResidenceId;
+    private StringProperty startAt;
+    private StringProperty endAt;
+    private IntegerProperty tempResidentId;
+    private StringProperty reason;
+
+    public TemporaryResidence(int temporaryResidenceId, String startAt, String endAt, int tempResidentId, String reason) {
+        this.temporaryResidenceId = new SimpleIntegerProperty(temporaryResidenceId);
+        this.startAt = new SimpleStringProperty(startAt);
+        this.endAt = new SimpleStringProperty(endAt);
+        this.tempResidentId = new SimpleIntegerProperty(tempResidentId);
+        this.reason = new SimpleStringProperty(reason);
+    }
 }

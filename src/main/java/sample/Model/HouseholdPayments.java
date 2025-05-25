@@ -1,12 +1,19 @@
 package main.java.sample.Model;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import javafx.beans.property.*;
 
 public class HouseholdPayments {
-    private long id;
-    private int householdId;
-    private BigDecimal amount;
-    private LocalDate paymentDate;
-    private String note;
+    private LongProperty householdPaymentsId;
+    private IntegerProperty householdId;
+    private DoubleProperty amount;
+    private StringProperty paymentDate;
+    private StringProperty note;
+
+    public HouseholdPayments(long householdPaymentsId, int householdId, double amount, String paymentDate, String note) {
+        this.householdPaymentsId = new SimpleLongProperty(householdPaymentsId);
+        this.householdId = new SimpleIntegerProperty(householdId);
+        this.amount = new SimpleDoubleProperty(amount);
+        this.paymentDate = new SimpleStringProperty(paymentDate);
+        this.note = new SimpleStringProperty(note);
+    }
 }

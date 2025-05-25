@@ -1,14 +1,18 @@
 package main.java.sample.Model;
 
-
-import java.math.BigDecimal;
+import javafx.beans.property.*;
 
 public class Fees {
-    private int id;
-    private String name;
-    private BigDecimal price;
-    private String description;
 
-    // Getters and setters
+    private IntegerProperty feesId;
+    private StringProperty name;
+    private DoubleProperty price;
+    private StringProperty description;
+
+    public Fees(int feesId, String name, double price, String description) {
+        this.feesId = new SimpleIntegerProperty(feesId);
+        this.name = new SimpleStringProperty(name);
+        this.price = new SimpleDoubleProperty(price);
+        this.description = new SimpleStringProperty(description);
+    }
 }
-
