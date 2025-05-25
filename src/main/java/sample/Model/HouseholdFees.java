@@ -3,7 +3,6 @@ package main.java.sample.Model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
 public class HouseholdFees {
     private int id;
     private int householdId;
