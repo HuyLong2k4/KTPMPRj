@@ -6,28 +6,28 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.java.sample.Controller.CuDanController">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.CuDanController">
 
     <!-- Top: Navigation -->
     <top>
         <HBox spacing="20">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label text="Trang chủ" fx:id="lblTrangChu"  onMouseClicked="#handleTrangChuClick"/>
-                <Label text="Căn hộ" fx:id="lblCanHo"  onMouseClicked="#handleCanHoClick"/>
-                <Label text="Cư dân"/>
-                <Label text="Khoản thu" fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" />
-                <Label text="Thống kê" fx:id="lblThongke"  onMouseClicked="#handleThongkelick" />
+                <Label fx:id="lblTrangChu" onMouseClicked="#handleTrangChuClick" text="Trang chủ" />
+                <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" />
+                <Label text="Cư dân" />
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" text="Khoản thu" />
+                <Label fx:id="lblThongke" onMouseClicked="#handleThongkelick" text="Thống kê" />
                 <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
-                    <HBox.margin><Insets left="120"/></HBox.margin>
+                    <HBox.margin><Insets left="350.0" /></HBox.margin>
                 </TextField>
             </children>
         </HBox>
@@ -37,41 +37,101 @@
     <center>
         <VBox spacing="10">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
 
             <!-- Tìm kiếm / Thêm -->
             <HBox spacing="10">
-                <TextField fx:id="txtSearch" promptText="Tìm kiếm cư dân..."/>
-                <Button text="Tìm" onAction="#onSearch"/>
-                <Button text="Tải lại" onAction="#onRefresh"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button text="Thêm" onAction="#onAdd" prefWidth="100"/>
+                <TextField fx:id="txtSearchCuDan" promptText="Tìm kiếm cư dân..." />
+                <Button onAction="#onSearch" text="Tìm" />
+                <Button onAction="#onRefresh" text="Tải lại" />
+                <Button onAction="#onAdd" text="Thêm mới" />
             </HBox>
 
             <!-- Tiêu đề cột -->
-            <HBox spacing="10">
-                <Label text="ID" prefWidth="80"/>
-                <Label text="Mã hộ" prefWidth="100"/>
-                <Label text="CMND" prefWidth="120"/>
-                <Label text="SĐT" prefWidth="100"/>
-                <Label text="Họ tên" prefWidth="150"/>
-                <Label text="Giới tính" prefWidth="80"/>
-                <Label text="Quan hệ" prefWidth="100"/>
-                <Label text="Ngày sinh" prefWidth="120"/>
-                <Label text="Nơi sinh" prefWidth="120"/>
-                <Label text="Nghề nghiệp" prefWidth="120"/>
-                <Label text="Nơi làm việc" prefWidth="120"/>
-                <Label text="Dân tộc" prefWidth="100"/>
-                <Label text="Tôn giáo" prefWidth="100"/>
-                <Label text="Tạm vắng" prefWidth="100"/>
-                <Label text="Tạm trú" prefWidth="100"/>
-                <Label text="Sửa" prefWidth="80"/>
-                <Label text="Xóa" prefWidth="80"/>
-            </HBox>
+            <TableView fx:id="tableResidents" prefHeight="500" prefWidth="960">
+                <columns>
+                    <TableColumn fx:id="colID" prefWidth="80" text="ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colMaHo" prefWidth="100" text="Mã hộ">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="maHo" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colCMND" prefWidth="120" text="CMND">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="cmnd" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colSDT" prefWidth="100" text="SĐT">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="sdt" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colHoTen" prefWidth="150" text="Họ tên">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="hoTen" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colGioiTinh" prefWidth="80" text="Giới tính">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="gioiTinh" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colQuanHe" prefWidth="100" text="Quan hệ">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="quanHe" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colNgaySinh" prefWidth="120" text="Ngày sinh">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="ngaySinh" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colNoiSinh" prefWidth="120" text="Nơi sinh">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="noiSinh" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colNgheNghiep" prefWidth="120" text="Nghề nghiệp">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="ngheNghiep" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colNoiLamViec" prefWidth="120" text="Nơi làm việc">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="noiLamViec" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colDanToc" prefWidth="100" text="Dân tộc">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="danToc" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colTonGiao" prefWidth="100" text="Tôn giáo">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tonGiao" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colTamVang" prefWidth="100" text="Tạm vắng">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tamVang" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colTamTru" prefWidth="100" text="Tạm trú">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tamTru" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colAction" prefWidth="160" text="Action" />
+                </columns>
+            </TableView>
 
             <!-- Container for dynamic resident rows -->
-            <VBox fx:id="vboxResidents" spacing="8"/>
+            <VBox fx:id="vboxResidents" spacing="8" />
         </VBox>
     </center>
 
