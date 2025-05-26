@@ -2,17 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 
 <BorderPane prefHeight="600.0" prefWidth="1000.0"
             xmlns="http://javafx.com/javafx/23.0.1"
@@ -23,48 +21,44 @@
     <top>
         <HBox spacing="20">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15"/>
             </padding>
             <children>
-                <Label prefWidth="80" text="Trang chủ" onMouseClicked="#handleTrangChuClick" fx:id="lblTrangChu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Căn hộ" onMouseClicked="#handleCanHoClick" fx:id="lblCanHo"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Cư dân" onMouseClicked="#handleCuDanClick" fx:id="lblCuDan"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Khoản Thu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Thống kê" onMouseClicked="#handleThongkelick" fx:id="lblThongke"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label fx:id="lblTrangChu" onMouseClicked="#handleTrangChuClick" text="Trang chủ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" text="Cư dân" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" text="Chủ Hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label fx:id="lblKhoanThu" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" />
+                <Label fx:id="lblThongKe" onMouseClicked="#handleThongkelick" text="Thống kê" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
                 <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
-                    <HBox.margin><Insets left="350"/></HBox.margin>
+                    <HBox.margin><Insets left="350.0"/></HBox.margin>
                 </TextField>
             </children>
         </HBox>
     </top>
 
-    <!-- Center: Payment Entries CRUD -->
+    <!-- Center: Danh sách khoản thu -->
     <center>
         <VBox spacing="10">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15"/>
             </padding>
 
-            <!-- Filter / Search / Add -->
+            <!-- Tìm kiếm / Thêm -->
             <HBox spacing="10">
-                <ComboBox fx:id="cmbLoai" prefWidth="150" promptText="Loại khoản thu...">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Đóng góp"/>
-                            <String fx:value="Bắt buộc"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-                <TextField fx:id="txtSearchKhoanThu" promptText="Tìm kiếm khoản thu..."/>
-                <Button text="Tìm" onAction="#onSearch"/>
-                <Button text="Tải lại" onAction="#onRefresh"/>
-                <Button text="Thêm mới" onAction="#onAdd" />
+                <TextField fx:id="txtSearchKhoanThu" promptText="Tìm kiếm khoản thu..." />
+                <Button onAction="#onSearch" text="Tìm"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+                <Button onAction="#onRefresh" text="Tải lại"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+                <Button onAction="#onAdd" text="Thêm mới"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
             </HBox>
 
-            <!-- Header Labels -->
-            <TableView fx:id="tableKhoanThu" prefHeight="500" prefWidth="950">
-                <columns>
-                    <TableColumn fx:id="colID" prefWidth="80" text="ID">
+            <!-- TableView Khoản thu -->
+            <TableView fx:id="tableKhoanThu" prefHeight="500" prefWidth="1150" >
+                       <columns>
+                    <TableColumn fx:id="colID" prefWidth="60" text="ID">
                         <cellValueFactory>
                             <PropertyValueFactory property="id" />
                         </cellValueFactory>

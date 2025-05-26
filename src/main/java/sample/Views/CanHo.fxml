@@ -19,15 +19,17 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label text="Trang chủ" fx:id="lblTrangChu"  onMouseClicked="#handleTrangChuClick"/>
-                <Label text="Căn hộ" />
-                <Label text="Cư dân" fx:id="lblCuDan"  onMouseClicked="#handleCuDanClick"/>
-                <Label text="Khoản thu" fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" />
-                <Label text="Thống kê" fx:id="lblThongke"  onMouseClicked="#handleThongkelick" />
+                <Label text="Trang chủ" fx:id="lblTrangChu"  onMouseClicked="#handleTrangChuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" />
+                <Label text="Cư dân" fx:id="lblCuDan"  onMouseClicked="#handleCuDanClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" text="Chủ Hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label text="Khoản thu" fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label text="Thống kê" fx:id="lblThongke"  onMouseClicked="#handleThongkelick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
                 <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
-               <HBox.margin>
-                  <Insets left="350.0" />
-               </HBox.margin></TextField>
+                    <HBox.margin>
+                        <Insets left="350.0" />
+                    </HBox.margin>
+                </TextField>
             </children>
         </HBox>
     </top>
@@ -40,12 +42,15 @@
 
             <HBox spacing="10">
                 <TextField fx:id="txtSearch" promptText="Tìm kiếm căn hộ..." />
-                <Button onAction="#onSearch" text="Tìm" />
-                <Button onAction="#onRefresh" text="Tải lại" />
-                <Button onAction="#onAdd" text="Thêm mới" />
+                <Button onAction="#onSearch" text="Tìm"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+                <Button onAction="#onRefresh" text="Tải lại"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+                <Button onAction="#onAdd" text="Thêm mới"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
             </HBox>
 
-            <TableView fx:id="tableApartments" prefHeight="500">
+            <TableView fx:id="tableApartments" prefHeight="500" prefWidth="700">
                 <columns>
                     <TableColumn fx:id="colId" prefWidth="60" text="ID">
                         <cellValueFactory>
