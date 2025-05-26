@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.java.sample.Controller.CanHoController"
-            prefHeight="600.0" prefWidth="1000.0">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.CanHoController">
 
     <top>
         <HBox spacing="20">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label text="Trang chủ"/>
-                <Label text="Căn hộ"/>
-                <Label text="Cư dân"/>
-                <Label text="Khoản thu"/>
-                <Label text="Thống kê"/>
-                <Label text="Cài đặt"/>
-                <TextField fx:id="txtGlobalSearch" promptText="Tìm kiếm..." prefWidth="200"/>
+                <Label text="Trang chủ" />
+                <Label text="Căn hộ" />
+                <Label text="Cư dân" />
+                <Label text="Khoản thu" />
+                <Label text="Thống kê" />
+                <Label text="Cài đặt" />
+                <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
+               <HBox.margin>
+                  <Insets left="350.0" />
+               </HBox.margin></TextField>
             </children>
         </HBox>
     </top>
@@ -30,38 +36,39 @@
     <center>
         <VBox spacing="10">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
 
             <HBox spacing="10">
-                <TextField fx:id="txtSearch" promptText="Tìm kiếm căn hộ..."/>
-                <Button text="Tìm" onAction="#onSearch"/>
-                <Button text="Tải lại" onAction="#onRefresh"/>
-                <Button text="Thêm mới" onAction="#onAdd"/>
+                <TextField fx:id="txtSearch" promptText="Tìm kiếm căn hộ..." />
+                <Button onAction="#onSearch" text="Tìm" />
+                <Button onAction="#onRefresh" text="Tải lại" />
+                <Button onAction="#onAdd" text="Thêm mới" />
             </HBox>
 
             <TableView fx:id="tableApartments" prefHeight="500">
                 <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="60">
+                    <TableColumn fx:id="colId" prefWidth="60" text="ID">
                         <cellValueFactory>
-                            <PropertyValueFactory property="householdId"/>
+                            <PropertyValueFactory property="householdId" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colRoom" text="Số căn hộ" prefWidth="120">
+                    <TableColumn fx:id="colRoom" prefWidth="120" text="Số căn hộ">
                         <cellValueFactory>
-                            <PropertyValueFactory property="roomNumber"/>
+                            <PropertyValueFactory property="roomNumber" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colArea" text="Diện tích (m²)" prefWidth="120">
+                    <TableColumn fx:id="colArea" prefWidth="120" text="Diện tích (m²)">
                         <cellValueFactory>
-                            <PropertyValueFactory property="area"/>
+                            <PropertyValueFactory property="area" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colOwner" text="Chủ hộ (ID)" prefWidth="100">
+                    <TableColumn fx:id="colOwner" prefWidth="100" text="Chủ hộ (ID)">
                         <cellValueFactory>
-                            <PropertyValueFactory property="ownedBy"/>
+                            <PropertyValueFactory property="ownedBy" />
                         </cellValueFactory>
                     </TableColumn>
+                    <TableColumn prefWidth="118.0" text="Action" fx:id="colAction"/>
                 </columns>
             </TableView>
         </VBox>

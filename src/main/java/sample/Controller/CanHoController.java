@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.java.sample.Model.Household;
 import database.DatabaseConnection;
@@ -42,14 +43,119 @@ public class CanHoController {
     private ObservableList<Household> apartmentList = FXCollections.observableArrayList();
 
     @FXML
+    private TableColumn<Household, Void> colAction;
+
+
+    @FXML
     public void initialize() {
         colId.setCellValueFactory(cellData -> cellData.getValue().householdIdProperty());
         colRoom.setCellValueFactory(cellData -> cellData.getValue().roomNumberProperty());
         colArea.setCellValueFactory(cellData -> cellData.getValue().areaProperty());
         colOwner.setCellValueFactory(cellData -> cellData.getValue().ownedByProperty());
-
+        addActionButtonsToTable();
         loadApartments();
     }
+
+    private void addActionButtonsToTable() {
+        colAction.setCellFactory(col -> new TableCell<>() {
+            private final Button btnDelete = new Button("Xóa");
+            private final Button btnEdit = new Button("Sửa");
+            private final HBox hbox = new HBox(5, btnEdit, btnDelete);
+
+            {
+                btnDelete.setOnAction(e -> {
+                    Household h = getTableView().getItems().get(getIndex());
+                    deleteHousehold(h);
+                });
+
+                btnEdit.setOnAction(e -> {
+                    Household h = getTableView().getItems().get(getIndex());
+                    editHousehold(h);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(hbox);
+                }
+            }
+        });
+    }
+
+    // Trong CanHoController.java
+
+    @FXML
+    private void editHousehold(Household h) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Sửa thông tin căn hộ");
+
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(10));
+
+        TextField roomField = new TextField(h.getRoomNumber());
+        TextField areaField = new TextField(String.valueOf(h.getArea()));
+        TextField ownerField = new TextField(String.valueOf(h.getOwnedBy()));
+
+        vbox.getChildren().addAll(new Label("Số căn hộ:"), roomField,
+                new Label("Diện tích:"), areaField,
+                new Label("ID chủ hộ:"), ownerField);
+
+        dialog.getDialogPane().setContent(vbox);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                String room = roomField.getText().trim();
+                String areaStr = areaField.getText().trim();
+                String ownerStr = ownerField.getText().trim();
+
+                try {
+                    double area = Double.parseDouble(areaStr);
+                    int owner = Integer.parseInt(ownerStr);
+
+                    try (Connection conn = DatabaseConnection.getConnection()) {
+                        String sql = "UPDATE household SET room_number = ?, area = ?, owned_by = ? WHERE household_id = ?";
+                        PreparedStatement ps = conn.prepareStatement(sql);
+                        ps.setString(1, room);
+                        ps.setDouble(2, area);
+                        ps.setInt(3, owner);
+                        ps.setInt(4, h.getHouseholdId());
+
+                        if (ps.executeUpdate() > 0) {
+                            h.setRoomNumber(room);
+                            h.setArea(area);
+                            h.setOwnedBy(owner);
+                            tableApartments.refresh();
+                            showAlert(" Đã cập nhật căn hộ.");
+                        }
+                    }
+                } catch (Exception e) {
+                    showAlert("Lỗi khi cập nhật: " + e.getMessage());
+                }
+            }
+        });
+    }
+
+
+    private void deleteHousehold(Household h) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "DELETE FROM household WHERE household_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, h.getHouseholdId());
+            if (ps.executeUpdate() > 0) {
+                apartmentList.remove(h);
+                tableApartments.refresh();
+                showAlert("Đã xóa căn hộ: " + h.getRoomNumber());
+            }
+        } catch (Exception e) {
+            showAlert("Lỗi khi xóa: " + e.getMessage());
+        }
+    }
+
 
     public void loadApartments() {
         apartmentList.clear();
@@ -154,10 +260,10 @@ public class CanHoController {
                                 Household newHousehold = new Household(newId, room, area, owner != null ? owner : 0);
                                 apartmentList.add(newHousehold);
                                 tableApartments.setItems(apartmentList);
-                                showAlert("✅ Thêm căn hộ thành công!");
+                                showAlert("Thêm căn hộ thành công!");
                             }
                         } else {
-                            showAlert("❌ Không thể thêm căn hộ.");
+                            showAlert("Không thể thêm căn hộ.");
                         }
                     }
                 } catch (NumberFormatException e) {
