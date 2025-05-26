@@ -99,14 +99,9 @@
                             <PropertyValueFactory property="trangThai" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colSua" prefWidth="80" text="Sửa" />
-                    <TableColumn fx:id="colXoa" prefWidth="80" text="Xóa" />
+                    <TableColumn fx:id="colAction" prefWidth="160" text="Action" />
                 </columns>
             </TableView>
-
-
-            <!-- Container for dynamic payment rows -->
-            <VBox fx:id="vboxKhoanThu" spacing="8"/>
         </VBox>
     </center>
 
