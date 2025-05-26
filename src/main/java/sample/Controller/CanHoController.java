@@ -4,9 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import main.java.sample.Model.Household;
 import database.DatabaseConnection;
 
+import javafx.geometry.Insets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,7 +98,76 @@ public class CanHoController {
 
     @FXML
     public void onAdd() {
-        showAlert("Chức năng Thêm mới đang được phát triển.");
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Thêm căn hộ mới");
+
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(10));
+
+        TextField roomField = new TextField();
+        roomField.setPromptText("Số căn hộ");
+
+        TextField areaField = new TextField();
+        areaField.setPromptText("Diện tích (m²)");
+
+        TextField ownerField = new TextField();
+        ownerField.setPromptText("ID chủ hộ (optional)");
+
+        vbox.getChildren().addAll(new Label("Số căn hộ:"), roomField,
+                new Label("Diện tích:"), areaField,
+                new Label("ID chủ hộ:"), ownerField);
+
+        dialog.getDialogPane().setContent(vbox);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                String room = roomField.getText().trim();
+                String areaStr = areaField.getText().trim();
+                String ownerStr = ownerField.getText().trim();
+
+                if (room.isEmpty() || areaStr.isEmpty()) {
+                    showAlert("Vui lòng nhập số căn hộ và diện tích.");
+                    return;
+                }
+
+                try {
+                    double area = Double.parseDouble(areaStr);
+                    Integer owner = ownerStr.isEmpty() ? null : Integer.parseInt(ownerStr);
+
+                    try (Connection conn = DatabaseConnection.getConnection()) {
+                        String sql = "INSERT INTO household (room_number, area, owned_by) VALUES (?, ?, ?)";
+                        PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                        ps.setString(1, room);
+                        ps.setDouble(2, area);
+                        if (owner != null) {
+                            ps.setInt(3, owner);
+                        } else {
+                            ps.setNull(3, java.sql.Types.INTEGER);
+                        }
+
+                        int affected = ps.executeUpdate();
+                        if (affected > 0) {
+                            ResultSet rs = ps.getGeneratedKeys();
+                            if (rs.next()) {
+                                int newId = rs.getInt(1);
+                                Household newHousehold = new Household(newId, room, area, owner != null ? owner : 0);
+                                apartmentList.add(newHousehold);
+                                tableApartments.setItems(apartmentList);
+                                showAlert("✅ Thêm căn hộ thành công!");
+                            }
+                        } else {
+                            showAlert("❌ Không thể thêm căn hộ.");
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    showAlert("⚠ Diện tích và ID chủ hộ phải là số.");
+                } catch (Exception e) {
+                    showAlert("Lỗi: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void showAlert(String msg) {
