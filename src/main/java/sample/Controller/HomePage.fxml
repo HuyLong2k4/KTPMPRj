@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.MainApp.Main">
+<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.HomePageController">
 
    <!-- Top: Navigation -->
    <top>
@@ -25,19 +25,19 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-            <Label prefHeight="18.0" prefWidth="80.0" text="Căn hộ">
+            <Label prefHeight="18.0" prefWidth="80.0" fx:id="lblCanHo" text="Căn hộ" onMouseClicked="#handleCanHoClick">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Cư dân">
+            <Label prefWidth="80.0" text="Cư dân" fx:id="lblCuDan"  onMouseClicked="#handleCuDanClick" >
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Khoản thu">
+            <Label prefWidth="80.0" text="Khoản thu" fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Thống kê">
+            <Label prefWidth="80.0" text="Thống kê" fx:id="lblThongke"  onMouseClicked="#handleThongkelick">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>

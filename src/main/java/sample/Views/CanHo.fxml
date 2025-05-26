@@ -19,12 +19,11 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label text="Trang chủ" />
+                <Label text="Trang chủ" fx:id="lblTrangChu"  onMouseClicked="#handleTrangChuClick"/>
                 <Label text="Căn hộ" />
-                <Label text="Cư dân" />
-                <Label text="Khoản thu" />
-                <Label text="Thống kê" />
-                <Label text="Cài đặt" />
+                <Label text="Cư dân" fx:id="lblCuDan"  onMouseClicked="#handleCuDanClick"/>
+                <Label text="Khoản thu" fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" />
+                <Label text="Thống kê" fx:id="lblThongke"  onMouseClicked="#handleThongkelick" />
                 <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
                <HBox.margin>
                   <Insets left="350.0" />

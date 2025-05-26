@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="sample.Controllers.ThongKeKhoanDongGopController" prefWidth="1200" prefHeight="800">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.sample.Controller.ThongKeKhoanDongGopController" prefWidth="1200" prefHeight="800">
     <!-- Top Menu Bar -->
     <top>
         <VBox spacing="10">

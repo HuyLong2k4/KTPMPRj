@@ -24,12 +24,11 @@
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
             <children>
-                <Label prefWidth="80" text="Trang chủ"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Căn hộ"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Cư dân"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Khoản thu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Thống kê"><HBox.margin><Insets top="5"/></HBox.margin></Label>
-                <Label prefWidth="80" text="Cài đặt"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Trang chủ" onMouseClicked="#handleTrangChuClick" fx:id="lblTrangChu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Căn hộ" onMouseClicked="#handleCanHoClick" fx:id="lblCanHo"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Cư dân" onMouseClicked="#handleCuDanClick" fx:id="lblCuDan"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Khoản Thu"><HBox.margin><Insets top="5"/></HBox.margin></Label>
+                <Label prefWidth="80" text="Thống kê" onMouseClicked="#handleThongkelick" fx:id="lblThongke"><HBox.margin><Insets top="5"/></HBox.margin></Label>
                 <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
                     <HBox.margin><Insets left="120"/></HBox.margin>
                 </TextField>
