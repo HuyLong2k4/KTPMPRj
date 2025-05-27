@@ -7,71 +7,54 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
 
-
-
-public class CuDanController {
-    public void onSearch () {
-
-    }
-    public void onRefresh () {
-
-    }
-
-    public void onAdd () {
-
-    }
-    @FXML
-    private Label lblKhoanThu;
-
+public class ChuHoController {
     @FXML
     private Label lblCanHo;
 
     @FXML
-    private Label lblThongke;
+    private Label lblKhoanThu;
+
+    @FXML
+    private Label lblCuDan;
+
+    @FXML
+    private Label lblThongKe;
 
     @FXML
     private Label lblTrangChu;
 
-    @FXML
-    private Label lblChuHo;
-
-    public void handleChuHoClick() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ChuHo.fxml"));
-            Parent chuHoPage = loader.load();
-
-            Stage stage = (Stage) lblChuHo.getScene().getWindow();
-            stage.setScene(new Scene(chuHoPage));
-            stage.setTitle("Quan ly Chủ Hộ");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Lỗi chuyển trang: " + e.getMessage());
-        }
-    }
-
-
-//    router chuyển kênh
-    @FXML
     public void handleTrangChuClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Controller/HomePage.fxml"));
             Parent canHoPage = loader.load();
 
-            Stage stage = (Stage) lblTrangChu.getScene().getWindow(); // lấy cửa sổ hiện tại
+            Stage stage = (Stage) lblTrangChu.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
-            stage.setTitle("Trang Chu");
+            stage.setTitle("Quan ly Can Hộ");
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Lỗi chuyển trang: " + e.getMessage());
         }
     }
 
-    public void handleKhoanthuClick() {
+    public void handleCanHoClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/CanHo.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblCanHo.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Can Hộ");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+    public void handleKhoanThuClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
             Parent khoanThuPage = loader.load();
@@ -87,31 +70,14 @@ public class CuDanController {
         }
     }
 
-    @FXML
-    public void handleCanHoClick() {
+    public void handleCuDanClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/CanHo.fxml"));
-            Parent canHoPage = loader.load();
-
-            Stage stage = (Stage) lblCanHo.getScene().getWindow(); // lấy cửa sổ hiện tại
-            stage.setScene(new Scene(canHoPage));
-            stage.setTitle("Quản lý căn hộ");
-            stage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Lỗi chuyển trang: " + e.getMessage());
-        }
-    }
-
-    public void handleThongkelick() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKe.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/CuDan.fxml"));
             Parent khoanThuPage = loader.load();
 
-            Stage stage = (Stage) lblThongke.getScene().getWindow(); // lấy cửa sổ hiện tại
+            Stage stage = (Stage) lblCuDan.getScene().getWindow(); // lấy cửa sổ hiện tại
             stage.setScene(new Scene(khoanThuPage));
-            stage.setTitle("Quản lý tống kê");
+            stage.setTitle("Quản lý cư dân");
             stage.show();
 
         } catch (Exception e) {
@@ -119,11 +85,41 @@ public class CuDanController {
             showAlert("Lỗi chuyển trang: " + e.getMessage());
         }
     }
+
+    public void handleThongKeClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKeKhoanDongGop.fxml"));
+            Parent thongKePage = loader.load();
+
+            Stage stage = (Stage) lblThongKe.getScene().getWindow(); // lấy cửa sổ hiện tại
+            stage.setScene(new Scene(thongKePage));
+            stage.setTitle("Quản lý thống kê");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+
+
     private void showAlert(String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Thông báo");
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Lỗi");
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    //onAction
+    public void onSearch() {
+
+    }
+    public void onRefresh() {
+
+    }
+    public void onAdd() {
+
     }
 }

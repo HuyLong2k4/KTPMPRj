@@ -65,6 +65,23 @@ public class CanHoController {
     @FXML
     private Label lblTrangChu;
 
+    @FXML
+    private Label lblChuHo;
+
+    public void handleChuHoClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ChuHo.fxml"));
+            Parent chuHoPage = loader.load();
+
+            Stage stage = (Stage) lblChuHo.getScene().getWindow();
+            stage.setScene(new Scene(chuHoPage));
+            stage.setTitle("Quan ly Chủ Hộ");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
 
     @FXML
     public void initialize() {
