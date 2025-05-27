@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 
+
+
 public class CuDanController {
     public void onSearch () {
 
