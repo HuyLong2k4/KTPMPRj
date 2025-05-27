@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class ChuHoController {
+public class TamVangController {
     public void onSearch () {
 
     }
@@ -52,7 +52,7 @@ public class ChuHoController {
         navigateTo("/main/java/sample/Views/Cudan.fxml", "Quản lý Cư Dân", lblCuDan);
     }
 
-    public void handleKhoanThuClick() {
+    public void handleKhoanthuClick() {
         navigateTo("/main/java/sample/Views/KhoanThu.fxml", "Quản lý Khoản Thu", lblKhoanThu);
     }
 

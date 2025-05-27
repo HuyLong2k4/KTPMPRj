@@ -23,7 +23,7 @@
                 <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
                 <Label fx:id="lblCuDan" text="Cư dân" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
                 <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" text="Chủ hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
                 <Label fx:id="lblThongke" onMouseClicked="#handleThongkelick" text="Thống kê" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
                 <Label fx:id="lblTamVang" onMouseClicked="#handleTamVangClick" text="Tạm vắng" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
                 <Label fx:id="lblTamTru" onMouseClicked="#handleTamTruClick" text="Tạm trú" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
@@ -44,7 +44,7 @@
 
             <!-- Tìm kiếm / Thêm -->
             <HBox spacing="10">
-                <TextField fx:id="txtSearchCuDan" promptText="Tìm kiếm cư dân..." />
+                <TextField fx:id="txtSearch" promptText="Tìm kiếm cư dân..." />
                 <Button onAction="#onSearch" text="Tìm"
                         style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
                 <Button onAction="#onRefresh" text="Tải lại"

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class HomePageController {
@@ -119,8 +120,36 @@ public class HomePageController {
         }
     }
 
+    public void handleTamVangClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TamVang.fxml"));
+            Parent khoanThuPage = loader.load();
 
+            Stage stage = (Stage) lblThongke.getScene().getWindow(); // lấy cửa sổ hiện tại
+            stage.setScene(new Scene(khoanThuPage));
+            stage.setTitle("Quản lý tạm vắng");
+            stage.show();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+    public void handleTamTruClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TamTru.fxml"));
+            Parent khoanThuPage = loader.load();
+
+            Stage stage = (Stage) lblThongke.getScene().getWindow(); // lấy cửa sổ hiện tại
+            stage.setScene(new Scene(khoanThuPage));
+            stage.setTitle("Quản lý tạm trú");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Lỗi");
@@ -128,5 +157,6 @@ public class HomePageController {
         alert.setContentText(msg);
         alert.showAndWait();
     }
+
 
 }

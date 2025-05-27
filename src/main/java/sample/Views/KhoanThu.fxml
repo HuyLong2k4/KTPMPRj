@@ -48,7 +48,7 @@
 
             <!-- Tìm kiếm / Thêm -->
             <HBox spacing="10">
-                <TextField fx:id="txtSearchKhoanThu" promptText="Tìm kiếm khoản thu..." />
+                <TextField fx:id="txtSearch" promptText="Tìm kiếm khoản thu..." />
                 <Button onAction="#onSearch" text="Tìm"
                         style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
                 <Button onAction="#onRefresh" text="Tải lại"
