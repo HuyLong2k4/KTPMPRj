@@ -21,34 +21,16 @@
             <Insets bottom="15" left="15" right="15" top="15" />
          </padding>
          <children>
-            <Label prefHeight="18.0" prefWidth="80.0" text="Trang chủ" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <Label prefHeight="18.0" prefWidth="80.0" fx:id="lblCanHo" text="Căn hộ" onMouseClicked="#handleCanHoClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Cư dân" fx:id="lblCuDan"  onMouseClicked="#handleCuDanClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" >
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Chủ Hộ" fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Khoản thu" fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <Label prefWidth="80.0" text="Thống kê" fx:id="lblThongke"  onMouseClicked="#handleThongkelick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Label>
-            <TextField prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
-               <HBox.margin>
-                  <Insets left="120.0" />
-               </HBox.margin></TextField>
+            <Label fx:id="lblTrangChu" text="Trang chủ" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" />
+            <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" text="Cư dân" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" text="Chủ hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="lblThongke" onMouseClicked="#handleThongkelick" text="Thống kê" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="lblTamVang" onMouseClicked="#handleTamVangClick" text="Tạm vắng" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+            <Label fx:id="lblTamTru" onMouseClicked="#handleTamTruClick" text="Tạm trú" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+            <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
+               <HBox.margin><Insets left="120.0" /></HBox.margin></TextField>
          </children>
       </HBox>
    </top>

@@ -22,13 +22,15 @@
             </padding>
             <children>
                 <Label fx:id="lblTrangChu" onMouseClicked="#handleTrangChuClick" text="Trang chủ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" text="Cư dân" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <Label text="Chủ hộ" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" />
-                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <Label fx:id="lblThongKe" onMouseClicked="#handleThongKeClick" text="Thống kê" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <TextField fx:id="txtGlobalSearch" prefWidth="200" promptText="Tìm kiếm...">
-                    <HBox.margin><Insets left="350.0" /></HBox.margin>
+                <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" text="Cư dân" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="lblChuHo" text="Chủ hộ" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="lblThongke" onMouseClicked="#handleThongkelick" text="Thống kê" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="lblTamVang" onMouseClicked="#handleTamVangClick" text="Tạm vắng" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <Label fx:id="lblTamTru" onMouseClicked="#handleTamTruClick" text="Tạm trú" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
+                    <HBox.margin><Insets left="120.0" /></HBox.margin>
                 </TextField>
             </children>
         </HBox>

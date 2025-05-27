@@ -86,7 +86,7 @@ public class ChuHoController {
         }
     }
 
-    public void handleThongKeClick() {
+    public void handleThongkelick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKeKhoanDongGop.fxml"));
             Parent thongKePage = loader.load();
