@@ -7,12 +7,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-
-<BorderPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.ChuHoController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.ChuHoController">
 
     <!-- Top: Navigation -->
     <top>
@@ -45,7 +43,7 @@
 
             <!-- Tìm kiếm / Thêm -->
             <HBox spacing="10">
-                <TextField fx:id="txtSearchChuHo" promptText="Tìm kiếm chủ hộ..." />
+                <TextField fx:id="txtSearch" promptText="Tìm kiếm chủ hộ..." />
                 <Button onAction="#onSearch" text="Tìm"
                         style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
                 <Button onAction="#onRefresh" text="Tải lại"
@@ -55,7 +53,7 @@
             </HBox>
 
             <!-- TableView Chủ hộ -->
-            <TableView fx:id="tableChuHo" prefHeight="500" prefWidth="1150">
+            <TableView fx:id="tableResidents" prefHeight="500" prefWidth="1150">
                 <columns>
                     <TableColumn fx:id="colID" prefWidth="60" text="ID">
                         <cellValueFactory>
