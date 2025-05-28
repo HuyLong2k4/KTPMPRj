@@ -203,7 +203,8 @@ public class HomePageController {
     @FXML
     private Label lblTongSoCuDan;
 
-    @FXML Label lblTongSoKhoanThu;
+    @FXML
+    private Label lblTongSoKhoanThu;
 
     @FXML
     public void initialize() {
