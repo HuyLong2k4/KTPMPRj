@@ -134,8 +134,6 @@ public class ChuHoController {
         colNoiLamViec.setCellValueFactory(cellData -> cellData.getValue().workingAtProperty());
         colDanToc.setCellValueFactory(cellData -> cellData.getValue().ethnicProperty());
         colTonGiao.setCellValueFactory(cellData -> cellData.getValue().religionProperty());
-        colTamVang.setCellValueFactory(cellData -> cellData.getValue().temporaryAbsentProperty());
-        colTamTru.setCellValueFactory(cellData -> cellData.getValue().temporaryResidenceProperty());
         addActionButtonsToTable();
         loadResidents();
     }
@@ -190,8 +188,6 @@ public class ChuHoController {
         TextField noiLamViecField = new TextField(h.getWorkingAt());
         TextField danTocField = new TextField(h.getEthnic());
         TextField tonGiaoField = new TextField(h.getReligion());
-        TextField tamvangField = new TextField(String.valueOf(h.isTemporaryAbsent()));
-        TextField tamtruField = new TextField(String.valueOf(h.isTemporaryResidence()));
 
 
         vbox.getChildren().addAll(
@@ -206,9 +202,7 @@ public class ChuHoController {
                 new Label("Nghề nghiệp:"), ngheNghiepField,
                 new Label("Nơi làm việc:"), noiLamViecField,
                 new Label("Dân tộc:"), danTocField,
-                new Label("Tôn giáo:"), tonGiaoField,
-                new Label("Tạm vắng:"), tamvangField,
-                new Label("Tạm trú:"), tamtruField);
+                new Label("Tôn giáo:"), tonGiaoField);
 
         dialog.getDialogPane().setContent(vbox);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
@@ -227,16 +221,12 @@ public class ChuHoController {
                 String noilamviec = noiLamViecField.getText().trim();
                 String dantoc = danTocField.getText().trim();
                 String tongiao = tonGiaoField.getText().trim();
-                String tamvangStr = tamvangField.getText().trim();
-                String tamtruStr = tamtruField.getText().trim();
 
                 try {
                     int maho = Integer.parseInt(mahoStr);
-                    boolean tamvang = Boolean.parseBoolean(tamvangStr);
-                    boolean tamtru = Boolean.parseBoolean(tamtruStr);
 
                     try (Connection conn = DatabaseConnection.getConnection()) {
-                        String sql = "UPDATE resident SET household_id = ?, citizen_id = ?, phone = ?, name = ?, sex = ?, relationship = ?, birthday = ?, birth_place = ?, job = ?, working_at = ?, ethnic = ?, religion = ?, temporary_absent = ?, temporary_residence = ?  WHERE resident_id = ?";
+                        String sql = "UPDATE resident SET household_id = ?, citizen_id = ?, phone = ?, name = ?, sex = ?, relationship = ?, birthday = ?, birth_place = ?, job = ?, working_at = ?, ethnic = ?, religion = ?  WHERE resident_id = ?";
                         PreparedStatement ps = conn.prepareStatement(sql);
                         ps.setInt(1, maho);
                         ps.setString(2, cmnd);
@@ -250,9 +240,7 @@ public class ChuHoController {
                         ps.setString(10, noilamviec);
                         ps.setString(11, dantoc);
                         ps.setString(12, tongiao);
-                        ps.setBoolean(13, tamvang);
-                        ps.setBoolean(14, tamtru);
-                        ps.setInt(15, h.getResidentId());
+                        ps.setInt(13, h.getResidentId());
 
                         if (ps.executeUpdate() > 0) {
                             h.setHouseholdId(maho);
@@ -267,8 +255,6 @@ public class ChuHoController {
                             h.setWorkingAt(noilamviec);
                             h.setEthnic(dantoc);
                             h.setReligion(tongiao);
-                            h.setTemporaryAbsent(tamvang);
-                            h.setTemporaryResidence(tamtru);
                             tableResidents.refresh();
                             showAlert("Đã cập nhật thông tin cư dân");
                         }
@@ -319,9 +305,7 @@ public class ChuHoController {
                         rs.getString("job"),
                         rs.getString("working_at"),
                         rs.getString("ethnic"),
-                        rs.getString("religion"),
-                        rs.getBoolean("temporary_absent"),
-                        rs.getBoolean("temporary_residence")
+                        rs.getString("religion")
                 );
                 residentList.add(h);
             }
@@ -331,55 +315,7 @@ public class ChuHoController {
         }
     }
 
-//    public void loadResidents() {
-//        residentList.clear();
-//        try (Connection conn = DatabaseConnection.getConnection()) {
-//            String sql = "SELECT * FROM resident";
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                Resident h = new Resident(
-//                        rs.getInt("resident_id"),
-//                        rs.getInt("household_id"),
-//                        rs.getString("citizen_id"),
-//                        rs.getString("phone"),
-//                        rs.getString("name"),
-//                        rs.getString("sex"),
-//                        rs.getString("relationship"),
-//                        rs.getString("birthday"),
-//                        rs.getString("birth_place"),
-//                        rs.getString("job"),
-//                        rs.getString("working_at"),
-//                        rs.getString("ethnic"),
-//                        rs.getString("religion"),
-//                        rs.getBoolean("temporary_absent"),
-//                        rs.getBoolean("temporary_residence")
-//                );
-//                residentList.add(h);
-//            }
-//            tableResidents.setItems(residentList);
-//        } catch (Exception e) {
-//            showAlert("Lỗi khi tải dữ liệu: " + e.getMessage());
-//        }
-//    }
 
-    //    @FXML
-//    public void onSearch() {
-//        String keyword = txtSearch.getText().trim().toLowerCase();
-//        if (keyword.isEmpty()) {
-//            tableResidents.setItems(residentList);
-//            return;
-//        }
-//
-//        ObservableList<Resident> filtered = FXCollections.observableArrayList();
-//        for (Resident h : residentList) {
-//            if (h.getName().toLowerCase().contains(keyword)) {
-//                filtered.add(h);
-//            }
-//        }
-//        tableResidents.setItems(filtered);
-//    }
     @FXML
     public void onSearch() {
         String keyword = txtSearch.getText().trim().toLowerCase();
@@ -491,16 +427,6 @@ public class ChuHoController {
         TextField tonGiaoField = new TextField();
         tonGiaoField.setPromptText("Tôn giáo");
 
-        ComboBox<Boolean> tamVangCombo = new ComboBox<>();
-        tamVangCombo.getItems().addAll(true, false);
-        tamVangCombo.setValue(false);
-        tamVangCombo.setConverter(new BooleanStringConverter());
-
-        ComboBox<Boolean> tamTruCombo = new ComboBox<>();
-        tamTruCombo.getItems().addAll(true, false);
-        tamTruCombo.setValue(false);
-        tamTruCombo.setConverter(new BooleanStringConverter());
-
         // Thêm các trường vào GridPane
         int row = 0;
         grid.add(new Label("Mã hộ*:"), 0, row);
@@ -539,11 +465,6 @@ public class ChuHoController {
         grid.add(new Label("Tôn giáo:"), 0, row);
         grid.add(tonGiaoField, 1, row++);
 
-        grid.add(new Label("Tạm vắng:"), 0, row);
-        grid.add(tamVangCombo, 1, row++);
-
-        grid.add(new Label("Tạm trú:"), 0, row);
-        grid.add(tamTruCombo, 1, row);
 
         // Thêm GridPane vào ScrollPane
         scrollPane.setContent(grid);
@@ -573,9 +494,8 @@ public class ChuHoController {
                             ngheNghiepField.getText(),
                             noiLamViecField.getText(),
                             danTocField.getText(),
-                            tonGiaoField.getText(),
-                            tamVangCombo.getValue(),
-                            tamTruCombo.getValue()
+                            tonGiaoField.getText()
+
                     );
                 } catch (NumberFormatException e) {
                     showAlert("Mã hộ phải là số");
@@ -601,8 +521,8 @@ public class ChuHoController {
         dialog.showAndWait().ifPresent(newResident -> {
             try (Connection conn = DatabaseConnection.getConnection()) {
                 String sql = "INSERT INTO resident (household_id, citizen_id, phone, name, sex, relationship, " +
-                        "birthday, birth_place, job, working_at, ethnic, religion, temporary_absent, temporary_residence) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        "birthday, birth_place, job, working_at, ethnic, religion) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, newResident.getHouseholdId());
@@ -617,8 +537,7 @@ public class ChuHoController {
                 ps.setString(10, newResident.getWorkingAt());
                 ps.setString(11, newResident.getEthnic());
                 ps.setString(12, newResident.getReligion());
-                ps.setBoolean(13, newResident.isTemporaryAbsent());
-                ps.setBoolean(14, newResident.isTemporaryResidence());
+
 
                 int affectedRows = ps.executeUpdate();
                 if (affectedRows > 0) {

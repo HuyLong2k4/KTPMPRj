@@ -16,10 +16,9 @@ public class Resident {
     private StringProperty workingAt;
     private StringProperty ethnic;
     private StringProperty religion;
-    private BooleanProperty temporaryAbsent;
-    private BooleanProperty temporaryResidence;
 
-    public Resident(int residentId, int householdId, String citizenId, String phone, String name, String sex, String relationship, String birthday, String birthPlace, String job, String workingAt, String ethnic, String religion, boolean temporaryAbsent, boolean temporaryResidence) {
+
+    public Resident(int residentId, int householdId, String citizenId, String phone, String name, String sex, String relationship, String birthday, String birthPlace, String job, String workingAt, String ethnic, String religion) {
         this.residentId = new SimpleIntegerProperty(residentId);
         this.householdId = new SimpleIntegerProperty(householdId);
         this.citizenId = new SimpleStringProperty(citizenId);
@@ -33,8 +32,6 @@ public class Resident {
         this.workingAt = new SimpleStringProperty(workingAt);
         this.ethnic = new SimpleStringProperty(ethnic);
         this.religion = new SimpleStringProperty(religion);
-        this.temporaryAbsent = new SimpleBooleanProperty(temporaryAbsent);
-        this.temporaryResidence = new SimpleBooleanProperty(temporaryResidence);
     }
 
     public String getPhone() {
@@ -193,29 +190,7 @@ public class Resident {
         this.religion.set(religion);
     }
 
-    public boolean isTemporaryAbsent() {
-        return temporaryAbsent.get();
-    }
 
-    public BooleanProperty temporaryAbsentProperty() {
-        return temporaryAbsent;
-    }
-
-    public void setTemporaryAbsent(boolean temporaryAbsent) {
-        this.temporaryAbsent.set(temporaryAbsent);
-    }
-
-    public boolean isTemporaryResidence() {
-        return temporaryResidence.get();
-    }
-
-    public BooleanProperty temporaryResidenceProperty() {
-        return temporaryResidence;
-    }
-
-    public void setTemporaryResidence(boolean temporaryResidence) {
-        this.temporaryResidence.set(temporaryResidence);
-    }
 
 
 }

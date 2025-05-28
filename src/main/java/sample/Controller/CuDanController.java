@@ -93,11 +93,7 @@ public class CuDanController {
     @FXML
     private TableColumn<Resident, String> colTonGiao;
 
-    @FXML
-    private TableColumn<Resident, Boolean> colTamVang;
 
-    @FXML
-    private TableColumn<Resident, Boolean> colTamTru;
 
     private ObservableList<Resident> residentList = FXCollections.observableArrayList();
 
@@ -133,8 +129,6 @@ public class CuDanController {
         colNoiLamViec.setCellValueFactory(cellData -> cellData.getValue().workingAtProperty());
         colDanToc.setCellValueFactory(cellData -> cellData.getValue().ethnicProperty());
         colTonGiao.setCellValueFactory(cellData -> cellData.getValue().religionProperty());
-        colTamVang.setCellValueFactory(cellData -> cellData.getValue().temporaryAbsentProperty());
-        colTamTru.setCellValueFactory(cellData -> cellData.getValue().temporaryResidenceProperty());
         addActionButtonsToTable();
         loadResidents();
     }
@@ -189,8 +183,6 @@ public class CuDanController {
         TextField noiLamViecField = new TextField(h.getWorkingAt());
         TextField danTocField = new TextField(h.getEthnic());
         TextField tonGiaoField = new TextField(h.getReligion());
-        TextField tamvangField = new TextField(String.valueOf(h.isTemporaryAbsent()));
-        TextField tamtruField = new TextField(String.valueOf(h.isTemporaryResidence()));
 
 
         vbox.getChildren().addAll(
@@ -205,9 +197,8 @@ public class CuDanController {
                 new Label("Nghề nghiệp:"), ngheNghiepField,
                 new Label("Nơi làm việc:"), noiLamViecField,
                 new Label("Dân tộc:"), danTocField,
-                new Label("Tôn giáo:"), tonGiaoField,
-                new Label("Tạm vắng:"), tamvangField,
-                new Label("Tạm trú:"), tamtruField);
+                new Label("Tôn giáo:"), tonGiaoField);
+
 
         dialog.getDialogPane().setContent(vbox);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
@@ -226,16 +217,14 @@ public class CuDanController {
                 String noilamviec = noiLamViecField.getText().trim();
                 String dantoc = danTocField.getText().trim();
                 String tongiao = tonGiaoField.getText().trim();
-                String tamvangStr = tamvangField.getText().trim();
-                String tamtruStr = tamtruField.getText().trim();
+
 
                 try {
                     int maho = Integer.parseInt(mahoStr);
-                    boolean tamvang = Boolean.parseBoolean(tamvangStr);
-                    boolean tamtru = Boolean.parseBoolean(tamtruStr);
+
 
                     try (Connection conn = DatabaseConnection.getConnection()) {
-                        String sql = "UPDATE resident SET household_id = ?, citizen_id = ?, phone = ?, name = ?, sex = ?, relationship = ?, birthday = ?, birth_place = ?, job = ?, working_at = ?, ethnic = ?, religion = ?, temporary_absent = ?, temporary_residence = ?  WHERE resident_id = ?";
+                        String sql = "UPDATE resident SET household_id = ?, citizen_id = ?, phone = ?, name = ?, sex = ?, relationship = ?, birthday = ?, birth_place = ?, job = ?, working_at = ?, ethnic = ?, religion = ?  WHERE resident_id = ?";
                         PreparedStatement ps = conn.prepareStatement(sql);
                         ps.setInt(1, maho);
                         ps.setString(2, cmnd);
@@ -249,9 +238,8 @@ public class CuDanController {
                         ps.setString(10, noilamviec);
                         ps.setString(11, dantoc);
                         ps.setString(12, tongiao);
-                        ps.setBoolean(13, tamvang);
-                        ps.setBoolean(14, tamtru);
-                        ps.setInt(15, h.getResidentId());
+
+                        ps.setInt(13, h.getResidentId());
 
                         if (ps.executeUpdate() > 0) {
                             h.setHouseholdId(maho);
@@ -266,8 +254,7 @@ public class CuDanController {
                             h.setWorkingAt(noilamviec);
                             h.setEthnic(dantoc);
                             h.setReligion(tongiao);
-                            h.setTemporaryAbsent(tamvang);
-                            h.setTemporaryResidence(tamtru);
+
                             tableResidents.refresh();
                             showAlert("Đã cập nhật thông tin cư dân");
                         }
@@ -317,9 +304,7 @@ public class CuDanController {
                         rs.getString("job"),
                         rs.getString("working_at"),
                         rs.getString("ethnic"),
-                        rs.getString("religion"),
-                        rs.getBoolean("temporary_absent"),
-                        rs.getBoolean("temporary_residence")
+                        rs.getString("religion")
                 );
                 residentList.add(h);
             }
@@ -396,152 +381,6 @@ public class CuDanController {
         loadResidents();
     }
 
-    //    @FXML
-//    public void onAdd() {
-//        Dialog<ButtonType> dialog = new Dialog<>();
-//        dialog.setTitle("Thêm cư dân mới");
-//
-//        VBox vbox = new VBox(10);
-//        vbox.setPadding(new Insets(10));
-//
-//        TextField mahoField = new TextField();
-//        mahoField.setPromptText("Mã hộ");
-//
-//        TextField cmndField = new TextField();
-//        cmndField.setPromptText("CMND");
-//
-//        TextField sdtField = new TextField();
-//        sdtField.setPromptText("Số điện thoại");
-//
-//        TextField hoTenField = new TextField();
-//        hoTenField.setPromptText("Họ tên");
-//
-//        TextField gioiTinhField = new TextField();
-//        gioiTinhField.setPromptText("Giới tính");
-//
-//        TextField quanHeField = new TextField();
-//        quanHeField.setPromptText("Quan hệ với chủ hộ");
-//
-//        TextField ngaySinhField = new TextField();
-//        ngaySinhField.setPromptText("Ngày sinh");
-//
-//        TextField noiSinhField = new TextField();
-//        noiSinhField.setPromptText("Nơi sinh");
-//
-//        TextField ngheNghiepField = new TextField();
-//        ngheNghiepField.setPromptText("Nghề nghiệp");
-//
-//        TextField noiLamViecField = new TextField();
-//        noiLamViecField.setPromptText("Nơi làm việc");
-//
-//        TextField danTocField = new TextField();
-//        danTocField.setPromptText("Dân tộc");
-//
-//        TextField tonGiaoField = new TextField();
-//        tonGiaoField.setPromptText("Tôn giáo");
-//
-//        TextField tamvangField = new TextField();
-//        tamvangField.setPromptText("Tạm vắng (0 hoặc 1)");
-//
-//        TextField tamtruField = new TextField();
-//        tamtruField.setPromptText("Tạm trú (0 hoặc 1)");
-//
-//
-//        vbox.getChildren().addAll(
-//                new Label("Mã hộ:"), mahoField,
-//                new Label("CMND:"), cmndField,
-//                new Label("SĐT:"), sdtField,
-//                new Label("Họ tên:"), hoTenField,
-//                new Label("Giới tính:"), gioiTinhField,
-//                new Label("Quan hệ với chủ hộ:"), quanHeField,
-//                new Label("Ngày sinh:"), ngaySinhField,
-//                new Label("Nơi sinh:"), noiSinhField,
-//                new Label("Nghề nghiệp:"), ngheNghiepField,
-//                new Label("Nơi làm việc:"), noiLamViecField,
-//                new Label("Dân tộc:"), danTocField,
-//                new Label("Tôn giáo:"), tonGiaoField,
-//                new Label("Tạm vắng (true/false):"), tamvangField,
-//                new Label("Tạm trú (true/false):"), tamtruField
-//        );
-//
-//
-//        dialog.getDialogPane().setContent(vbox);
-//        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-//
-//        dialog.showAndWait().ifPresent(response -> {
-//            if (response == ButtonType.OK) {
-//                String householdIdStr = mahoField.getText().trim();
-//                String citizenId = cmndField.getText().trim();
-//                String phone = sdtField.getText().trim();
-//                String name = hoTenField.getText().trim();
-//                String sex = gioiTinhField.getText().trim();
-//                String relationship = quanHeField.getText().trim();
-//                String birthday = ngaySinhField.getText().trim();
-//                String birthPlace = noiSinhField.getText().trim();
-//                String job = ngheNghiepField.getText().trim();
-//                String workingAt = noiLamViecField.getText().trim();
-//                String ethnic = danTocField.getText().trim();
-//                String religion = tonGiaoField.getText().trim();
-//                String tempAbsentStr = tamvangField.getText().trim();
-//                String tempResidenceStr = tamtruField.getText().trim();
-//
-//                if (householdIdStr.isEmpty() || citizenId.isEmpty() || name.isEmpty()) {
-//                    showAlert("⚠ Vui lòng nhập đầy đủ thông tin bắt buộc.");
-//                    return;
-//                }
-//
-//                try {
-//                    int householdId = Integer.parseInt(householdIdStr);
-//                    boolean temporaryAbsent = Boolean.parseBoolean(tempAbsentStr);
-//                    boolean temporaryResidence = Boolean.parseBoolean(tempResidenceStr);
-//
-//                    try (Connection conn = DatabaseConnection.getConnection()) {
-//                        String sql = "INSERT INTO resident (household_id, citizen_id, phone, name, sex, relationship, birthday, birth_place, job, working_at, ethnic, religion, temporary_absent, temporary_residence) " +
-//                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//
-//                        PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-//                        ps.setInt(1, householdId);
-//                        ps.setString(2, citizenId);
-//                        ps.setString(3, phone);
-//                        ps.setString(4, name);
-//                        ps.setString(5, sex);
-//                        ps.setString(6, relationship);
-//                        ps.setString(7, birthday);
-//                        ps.setString(8, birthPlace);
-//                        ps.setString(9, job);
-//                        ps.setString(10, workingAt);
-//                        ps.setString(11, ethnic);
-//                        ps.setString(12, religion);
-//                        ps.setBoolean(13, temporaryAbsent);
-//                        ps.setBoolean(14, temporaryResidence);
-//
-//                        int affected = ps.executeUpdate();
-//                        if (affected > 0) {
-//                            ResultSet rs = ps.getGeneratedKeys();
-//                            if (rs.next()) {
-//                                int newId = rs.getInt(1);
-//                                Resident newResident = new Resident(
-//                                        newId, householdId, citizenId, phone, name, sex, relationship,
-//                                        birthday, birthPlace, job, workingAt, ethnic, religion,
-//                                        temporaryAbsent, temporaryResidence
-//                                );
-//                                residentList.add(newResident);
-//                                tableResidents.setItems(residentList);
-//                                showAlert("Thêm cư dân thành công!");
-//                            }
-//                        } else {
-//                            showAlert("Không thể thêm cư dân.");
-//                        }
-//                    }
-//                } catch (NumberFormatException e) {
-//                    showAlert("⚠ Mã hộ phải là số, các trường tạm vắng và tạm trú phải đúng định dạng boolean (true/false).");
-//                } catch (Exception e) {
-//                    showAlert("Lỗi: " + e.getMessage());
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
     @FXML
     public void onAdd() {
         Dialog<Resident> dialog = new Dialog<>();
@@ -602,16 +441,6 @@ public class CuDanController {
         TextField tonGiaoField = new TextField();
         tonGiaoField.setPromptText("Tôn giáo");
 
-        ComboBox<Boolean> tamVangCombo = new ComboBox<>();
-        tamVangCombo.getItems().addAll(true, false);
-        tamVangCombo.setValue(false);
-        tamVangCombo.setConverter(new BooleanStringConverter());
-
-        ComboBox<Boolean> tamTruCombo = new ComboBox<>();
-        tamTruCombo.getItems().addAll(true, false);
-        tamTruCombo.setValue(false);
-        tamTruCombo.setConverter(new BooleanStringConverter());
-
         // Thêm các trường vào GridPane
         int row = 0;
         grid.add(new Label("Mã hộ*:"), 0, row);
@@ -650,11 +479,7 @@ public class CuDanController {
         grid.add(new Label("Tôn giáo:"), 0, row);
         grid.add(tonGiaoField, 1, row++);
 
-        grid.add(new Label("Tạm vắng:"), 0, row);
-        grid.add(tamVangCombo, 1, row++);
 
-        grid.add(new Label("Tạm trú:"), 0, row);
-        grid.add(tamTruCombo, 1, row);
 
         // Thêm GridPane vào ScrollPane
         scrollPane.setContent(grid);
@@ -684,9 +509,8 @@ public class CuDanController {
                             ngheNghiepField.getText(),
                             noiLamViecField.getText(),
                             danTocField.getText(),
-                            tonGiaoField.getText(),
-                            tamVangCombo.getValue(),
-                            tamTruCombo.getValue()
+                            tonGiaoField.getText()
+
                     );
                 } catch (NumberFormatException e) {
                     showAlert("Mã hộ phải là số");
@@ -712,8 +536,8 @@ public class CuDanController {
         dialog.showAndWait().ifPresent(newResident -> {
             try (Connection conn = DatabaseConnection.getConnection()) {
                 String sql = "INSERT INTO resident (household_id, citizen_id, phone, name, sex, relationship, " +
-                        "birthday, birth_place, job, working_at, ethnic, religion, temporary_absent, temporary_residence) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        "birthday, birth_place, job, working_at, ethnic, religion) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, newResident.getHouseholdId());
@@ -728,8 +552,7 @@ public class CuDanController {
                 ps.setString(10, newResident.getWorkingAt());
                 ps.setString(11, newResident.getEthnic());
                 ps.setString(12, newResident.getReligion());
-                ps.setBoolean(13, newResident.isTemporaryAbsent());
-                ps.setBoolean(14, newResident.isTemporaryResidence());
+
 
                 int affectedRows = ps.executeUpdate();
                 if (affectedRows > 0) {

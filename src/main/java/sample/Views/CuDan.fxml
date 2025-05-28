@@ -121,16 +121,6 @@
                             <PropertyValueFactory property="tonGiao" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colTamVang" prefWidth="110" text="Tạm vắng">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="tamVang" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="colTamTru" prefWidth="110" text="Tạm trú">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="tamTru" />
-                        </cellValueFactory>
-                    </TableColumn>
                     <TableColumn fx:id="colAction" prefWidth="160" text="Action" />
                 </columns>
             </TableView>
