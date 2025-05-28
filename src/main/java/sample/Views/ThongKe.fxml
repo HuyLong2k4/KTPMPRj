@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.sample.Controller.ThongKeKhoanDongGopController" prefWidth="1200" prefHeight="800">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600" prefWidth="1000" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="main.java.sample.Controller.ThongKeKhoanDongGopController">
     <!-- Top Menu Bar -->
     <top>
         <HBox spacing="20">
@@ -11,14 +18,14 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label fx:id="lblTrangChu" onMouseClicked="#handleTrangChuClick" text="Trang chủ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" text="Căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" text="Cư dân" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" text="Chủ hộ" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" text="Khoản thu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                <Label fx:id="lblThongke" text="Thống kê" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
-                <Label fx:id="lblTamVang" onMouseClicked="#handleTamVangClick" text="Tạm vắng" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
-                <Label fx:id="lblTamTru" onMouseClicked="#handleTamTruClick" text="Tạm trú" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"  />
+                <Label fx:id="lblTrangChu" onMouseClicked="#handleTrangChuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+                <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
+                <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Cư dân" />
+                <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Chủ hộ" />
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
+                <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Thống kê" />
+                <Label fx:id="lblTamVang" onMouseClicked="#handleTamVangClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tạm vắng" />
+                <Label fx:id="lblTamTru" onMouseClicked="#handleTamTruClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tạm trú" />
                 <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
                     <HBox.margin><Insets left="120.0" /></HBox.margin>
                 </TextField>
@@ -29,15 +36,15 @@
     <!-- Center Content -->
     <center>
         <VBox alignment="TOP_CENTER" spacing="30">
-            <Label text="THỐNG KÊ CÁC KHOẢN ĐÃ ĐÓNG GÓP" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="THỐNG KÊ CÁC KHOẢN ĐÃ ĐÓNG GÓP" />
             <TableView prefHeight="400" prefWidth="1100">
                 <columns>
-                    <TableColumn text="Đầu mục" prefWidth="180" />
-                    <TableColumn text="Trạng thái" prefWidth="130" />
-                    <TableColumn text="Mô tả" prefWidth="220" />
-                    <TableColumn text="Số người đã đóng" prefWidth="170" />
-                    <TableColumn text="Tiến độ" prefWidth="170" />
-                    <TableColumn text="Khác" prefWidth="170" />
+                    <TableColumn prefWidth="180" text="Đầu mục" />
+                    <TableColumn prefWidth="130" text="Trạng thái" />
+                    <TableColumn prefWidth="220" text="Mô tả" />
+                    <TableColumn prefWidth="170" text="Số người đã đóng" />
+                    <TableColumn prefWidth="170" text="Tiến độ" />
+                    <TableColumn prefWidth="170" text="Khác" />
                 </columns>
             </TableView>
         </VBox>
@@ -47,14 +54,10 @@
     <bottom>
         <HBox alignment="CENTER" spacing="40">
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-            <Button prefWidth="150" text="Tạo khoản thu"
-                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
-            <Button prefWidth="150" text="Thu phí"
-                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
-            <Button prefWidth="150" text="Xuất báo cáo"
-                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+            <Button prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Tạo khoản thu" />
+            <Button prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Thu phí" />
         </HBox>
     </bottom>
 </BorderPane>
