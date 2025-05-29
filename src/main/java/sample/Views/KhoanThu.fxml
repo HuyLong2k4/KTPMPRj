@@ -58,11 +58,11 @@
             </HBox>
 
             <!-- TableView Khoản thu -->
-            <TableView fx:id="tableKhoanThu" prefHeight="500" prefWidth="1150" >
-                       <columns>
-                    <TableColumn fx:id="colID" prefWidth="60" text="ID">
+            <TableView fx:id="tableKhoanThu" prefHeight="500" prefWidth="1150">
+                <columns>
+                    <TableColumn fx:id="feesIdCol" prefWidth="60" text="ID">
                         <cellValueFactory>
-                            <PropertyValueFactory property="id" />
+                            <PropertyValueFactory property="feesId" />
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn fx:id="colMaHo" prefWidth="100" text="Mã hộ">
@@ -70,19 +70,19 @@
                             <PropertyValueFactory property="maHo" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colTenKhoanThu" prefWidth="200" text="Tên khoản thu">
+                    <TableColumn fx:id="nameCol" prefWidth="200" text="Tên khoản thu">
                         <cellValueFactory>
-                            <PropertyValueFactory property="tenKhoanThu" />
+                            <PropertyValueFactory property="name" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colLoai" prefWidth="120" text="Loại">
+                    <TableColumn fx:id="descriptionCol" prefWidth="120" text="Loại">
                         <cellValueFactory>
-                            <PropertyValueFactory property="loai" />
+                            <PropertyValueFactory property="description" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colSoTien" prefWidth="120" text="Số tiền">
+                    <TableColumn fx:id="priceCol" prefWidth="120" text="Số tiền">
                         <cellValueFactory>
-                            <PropertyValueFactory property="soTien" />
+                            <PropertyValueFactory property="price" />
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn fx:id="colNgay" prefWidth="150" text="Ngày">
