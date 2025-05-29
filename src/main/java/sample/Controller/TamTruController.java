@@ -39,6 +39,9 @@ public class TamTruController {
     @FXML
     private Label lblChuHo;
 
+    @FXML
+    private Label lblTamVang;
+
     public void handleChuHoClick() {
         navigateTo("/main/java/sample/Views/ChuHo.fxml", "Quản lý Chủ Hộ", lblChuHo);
     }
@@ -66,7 +69,7 @@ public class TamTruController {
     }
 
     public void handleTamVangClick() {
-        navigateTo("/main/java/sample/Views/TamVang.fxml", "Quản lý Tạm Vắng", lblThongke);
+        navigateTo("/main/java/sample/Views/TamVang.fxml", "Quản lý Tạm Vắng", lblTamVang);
     }
 
     public void handleTamTruClick() {

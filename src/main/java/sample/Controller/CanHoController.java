@@ -68,6 +68,9 @@ public class CanHoController {
     @FXML
     private Label lblChuHo;
 
+    @FXML
+    private Label lblTamVang;
+
     public void handleChuHoClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ChuHo.fxml"));
@@ -393,7 +396,7 @@ public class CanHoController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TamVang.fxml"));
             Parent khoanThuPage = loader.load();
 
-            Stage stage = (Stage) lblThongke.getScene().getWindow(); // lấy cửa sổ hiện tại
+            Stage stage = (Stage) lblTamVang.getScene().getWindow(); // lấy cửa sổ hiện tại
             stage.setScene(new Scene(khoanThuPage));
             stage.setTitle("Quản lý tạm vắng");
             stage.show();

@@ -115,6 +115,9 @@ public class CuDanController {
     @FXML
     private Label lblChuHo;
 
+    @FXML
+    private Label lblTamVang;
+
     public void initialize() {
         colID.setCellValueFactory(cellData -> cellData.getValue().residentIdProperty());
         colMaHo.setCellValueFactory(cellData -> cellData.getValue().householdIdProperty());
@@ -314,22 +317,6 @@ public class CuDanController {
         }
     }
 
-    //    @FXML
-//    public void onSearch() {
-//        String keyword = txtSearch.getText().trim().toLowerCase();
-//        if (keyword.isEmpty()) {
-//            tableResidents.setItems(residentList);
-//            return;
-//        }
-//
-//        ObservableList<Resident> filtered = FXCollections.observableArrayList();
-//        for (Resident h : residentList) {
-//            if (h.getName().toLowerCase().contains(keyword)) {
-//                filtered.add(h);
-//            }
-//        }
-//        tableResidents.setItems(filtered);
-//    }
     @FXML
     public void onSearch() {
         String keyword = txtSearch.getText().trim().toLowerCase();
@@ -663,7 +650,7 @@ public class CuDanController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TamVang.fxml"));
             Parent khoanThuPage = loader.load();
 
-            Stage stage = (Stage) lblThongke.getScene().getWindow(); // lấy cửa sổ hiện tại
+            Stage stage = (Stage) lblTamVang.getScene().getWindow(); // lấy cửa sổ hiện tại
             stage.setScene(new Scene(khoanThuPage));
             stage.setTitle("Quản lý tạm vắng");
             stage.show();

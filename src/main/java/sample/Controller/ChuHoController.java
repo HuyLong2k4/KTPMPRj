@@ -120,6 +120,9 @@ public class ChuHoController {
     @FXML
     private Label lblChuHo;
 
+    @FXML
+    private Label lblTamVang;
+
     public void initialize() {
         colID.setCellValueFactory(cellData -> cellData.getValue().residentIdProperty());
         colMaHo.setCellValueFactory(cellData -> cellData.getValue().householdIdProperty());
@@ -583,7 +586,7 @@ public class ChuHoController {
     }
 
     public void handleTamVangClick() {
-        navigateTo("/main/java/sample/Views/TamVang.fxml", "Quản lý Tạm Vắng", lblThongke);
+        navigateTo("/main/java/sample/Views/TamVang.fxml", "Quản lý Tạm Vắng", lblTamVang);
     }
 
     public void handleTamTruClick() {
