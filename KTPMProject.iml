@@ -10,5 +10,7 @@
     <orderEntry type="library" name="javafx21" level="application" />
     <orderEntry type="library" name="mysql-connector-j-9.3.0" level="project" />
     <orderEntry type="library" name="javafx-swt" level="project" />
+    <orderEntry type="library" name="javafx-swt1" level="project" />
+    <orderEntry type="library" name="mysql-connector-j-9.3.1" level="project" />
   </component>
 </module>
