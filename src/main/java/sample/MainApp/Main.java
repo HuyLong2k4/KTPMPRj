@@ -16,7 +16,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+<<<<<<< HEAD
             Parent root = FXMLLoader.load(getClass().getResource("/main/java/sample/Controller/HomePage.fxml"));
+=======
+            Parent root = FXMLLoader.load(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+>>>>>>> 091d250 (tuan ho khau)
             Scene scene = new Scene(root);
             primaryStage.setTitle("Đăng nhập hệ thống");
             primaryStage.setScene(scene);

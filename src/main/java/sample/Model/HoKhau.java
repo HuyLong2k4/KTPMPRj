@@ -2,45 +2,71 @@ package main.java.sample.Model;
 
 import javafx.beans.property.*;
 
-public class HoKhau {
-    private IntegerProperty soHoKhau;
-    private StringProperty soNha;
-    private StringProperty duong;
-    private StringProperty phuong;
-    private StringProperty quan;
-    private ObjectProperty<java.time.LocalDate> ngayLamHoKhau;
+import java.time.LocalDate;
 
-    public HoKhau() {
-        this.soHoKhau = new SimpleIntegerProperty();
-        this.soNha = new SimpleStringProperty();
-        this.duong = new SimpleStringProperty();
-        this.phuong = new SimpleStringProperty();
-        this.quan = new SimpleStringProperty();
-        this.ngayLamHoKhau = new SimpleObjectProperty<>();
+public class HoKhau {
+    private int soHoKhau;
+    private String soNha;
+    private String duong;
+    private String phuong;
+    private String quan;
+    private LocalDate ngayLamHoKhau;
+
+    public HoKhau(int soHoKhau, String soNha, String duong, String phuong, String quan, LocalDate ngayLamHoKhau) {
+        this.soHoKhau = soHoKhau;
+        this.soNha = soNha;
+        this.duong = duong;
+        this.phuong = phuong;
+        this.quan = quan;
+        this.ngayLamHoKhau = ngayLamHoKhau;
     }
 
-    public int getSoHoKhau() { return soHoKhau.get(); }
-    public void setSoHoKhau(int soHoKhau) { this.soHoKhau.set(soHoKhau); }
-    public IntegerProperty soHoKhauProperty() { return soHoKhau; }
+    public int getSoHoKhau() {
+        return soHoKhau;
+    }
 
-    public String getSoNha() { return soNha.get(); }
-    public void setSoNha(String soNha) { this.soNha.set(soNha); }
-    public StringProperty soNhaProperty() { return soNha; }
+    public void setSoHoKhau(int soHoKhau) {
+        this.soHoKhau = soHoKhau;
+    }
 
-    public String getDuong() { return duong.get(); }
-    public void setDuong(String duong) { this.duong.set(duong); }
-    public StringProperty duongProperty() { return duong; }
+    public String getSoNha() {
+        return soNha;
+    }
 
-    public String getPhuong() { return phuong.get(); }
-    public void setPhuong(String phuong) { this.phuong.set(phuong); }
-    public StringProperty phuongProperty() { return phuong; }
+    public void setSoNha(String soNha) {
+        this.soNha = soNha;
+    }
 
-    public String getQuan() { return quan.get(); }
-    public void setQuan(String quan) { this.quan.set(quan); }
-    public StringProperty quanProperty() { return quan; }
+    public String getDuong() {
+        return duong;
+    }
 
-    public java.time.LocalDate getNgayLamHoKhau() { return ngayLamHoKhau.get(); }
-    public void setNgayLamHoKhau(java.time.LocalDate ngayLamHoKhau) { this.ngayLamHoKhau.set(ngayLamHoKhau); }
-    public ObjectProperty<java.time.LocalDate> ngayLamHoKhauProperty() { return ngayLamHoKhau; }
+    public void setDuong(String duong) {
+        this.duong = duong;
+    }
+
+    public String getPhuong() {
+        return phuong;
+    }
+
+    public void setPhuong(String phuong) {
+        this.phuong = phuong;
+    }
+
+    public String getQuan() {
+        return quan;
+    }
+
+    public void setQuan(String quan) {
+        this.quan = quan;
+    }
+
+    public LocalDate getNgayLamHoKhau() {
+        return ngayLamHoKhau;
+    }
+
+    public void setNgayLamHoKhau(LocalDate ngayLamHoKhau) {
+        this.ngayLamHoKhau = ngayLamHoKhau;
+    }
 }
 
