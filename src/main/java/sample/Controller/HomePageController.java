@@ -32,6 +32,25 @@ public class HomePageController {
         }
     }
 
+    @FXML
+    private Label lblKhoanThu;
+
+    @FXML
+    public void handleKhoanThuClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Khoản Thu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
 
 
     private void showAlert(String msg) {

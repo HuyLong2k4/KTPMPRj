@@ -354,6 +354,26 @@ private Label lblTrangChu;
         }
     }
 
+    @FXML
+    private Label lblKhoanThu;
+
+    @FXML
+    public void handleKhoanThuClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Khoản Thu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Lỗi chuyển trang: " + e.getMessage());
+
+        }
+    }
+
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);

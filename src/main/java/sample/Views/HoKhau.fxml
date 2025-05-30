@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.NhanKhauController">
+<BorderPane prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.HoKhauController">
 
     <!-- Top: Navigation -->
     <top>
@@ -20,7 +20,7 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+                <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
                 <Label fx:id="lblHoKhau" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Hộ khẩu" />
                 <Label fx:id="lblNhanKhau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
                 <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
