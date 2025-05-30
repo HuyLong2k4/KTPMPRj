@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.HomePageController">
+<BorderPane prefHeight="600" prefWidth="980" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.HomePageController">
 
    <!-- Top: Navigation -->
    <top>
@@ -21,14 +21,11 @@
             <Insets bottom="15" left="15" right="15" top="15" />
          </padding>
          <children>
-            <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Trang chủ" />
-            <Label fx:id="lblCanHo" onMouseClicked="#handleCanHoClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
-            <Label fx:id="lblCuDan" onMouseClicked="#handleCuDanClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Cư dân" />
-            <Label fx:id="lblChuHo" onMouseClicked="#handleChuHoClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Chủ hộ" />
-            <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanthuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
-            <Label fx:id="lblThongke" onMouseClicked="#handleThongkelick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
-            <Label fx:id="lblTamVang" onMouseClicked="#handleTamVangClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tạm vắng" />
-            <Label fx:id="lblTamTru" onMouseClicked="#handleTamTruClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tạm trú" />
+            <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+            <Label fx:id="lblCanHo" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
+            <Label fx:id="lblCuDan" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
+            <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
+            <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
             <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
                <HBox.margin><Insets left="120.0" /></HBox.margin></TextField>
          </children>
