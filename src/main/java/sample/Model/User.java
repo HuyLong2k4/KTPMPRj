@@ -1,24 +1,30 @@
 package main.java.sample.Model;
 
 
-import javafx.beans.property.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class User {
-    private IntegerProperty usersId;
     private StringProperty username;
-    private StringProperty passwordHash;
-    private StringProperty name;
-    private StringProperty role;
-    private StringProperty createdAt;
-    private StringProperty updatedAt;
+    private StringProperty password;
+    private StringProperty vaitro;
 
-    public User(int usersId, String username, String passwordHash, String name, String role, String createdAt, String updatedAt) {
-        this.usersId = new SimpleIntegerProperty(usersId);
-        this.username = new SimpleStringProperty(username);
-        this.passwordHash = new SimpleStringProperty(passwordHash);
-        this.name = new SimpleStringProperty(name);
-        this.role = new SimpleStringProperty(role);
-        this.createdAt = new SimpleStringProperty(createdAt);
-        this.updatedAt = new SimpleStringProperty(updatedAt);
+    public User() {
+        this.username = new SimpleStringProperty();
+        this.password = new SimpleStringProperty();
+        this.vaitro = new SimpleStringProperty();
     }
+
+    public String getUsername() { return username.get(); }
+    public void setUsername(String username) { this.username.set(username); }
+    public StringProperty usernameProperty() { return username; }
+
+    public String getPassword() { return password.get(); }
+    public void setPassword(String password) { this.password.set(password); }
+    public StringProperty passwordProperty() { return password; }
+
+    public String getVaitro() { return vaitro.get(); }
+    public void setVaitro(String vaitro) { this.vaitro.set(vaitro); }
+    public StringProperty vaitroProperty() { return vaitro; }
 }
+

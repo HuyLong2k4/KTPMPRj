@@ -16,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/main/java/sample/Views/LoginWindow.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Đăng nhập hệ thống");
             primaryStage.setScene(scene);
@@ -24,7 +24,7 @@ public class Main extends Application {
             primaryStage.centerOnScreen();
             primaryStage.show();
 
-            System.out.println("✓ Ứng dụng khởi chạy thành công!");
+            System.out.println("Ứng dụng khởi chạy thành công!");
         } catch (Exception e) {
             e.printStackTrace();
         }

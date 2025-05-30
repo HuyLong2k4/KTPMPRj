@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -72,7 +71,7 @@ public class HomePageController {
     @FXML
     private void handleCuDanClickBtn() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/CuDan.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
             Parent cuDanPage = loader.load();
 
             Stage stage = (Stage) btnCanHo.getScene().getWindow();
@@ -138,7 +137,7 @@ public class HomePageController {
 
     public void handleCuDanClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/CuDan.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
             Parent khoanThuPage = loader.load();
 
             Stage stage = (Stage) lblCuDan.getScene().getWindow(); // lấy cửa sổ hiện tại

@@ -11,10 +11,9 @@ public class DatabaseConnection {
 
             String url = "jdbc:mysql://localhost:3306/chungcu";
             String user = "root";
-            String password = "1234";
+            String password = "123456";
 
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Đã kết nối MySQL thành công!");
         } catch (Exception e) {
             System.out.println("Kết nối thất bại: " + e.getMessage());
         }
