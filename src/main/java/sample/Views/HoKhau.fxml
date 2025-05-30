@@ -21,11 +21,11 @@
             </padding>
             <children>
                 <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
-                <Label fx:id="lblHoKhau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
-                <Label fx:id="lblNhanKhau" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
+                <Label fx:id="lblHoKhau" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Hộ khẩu" />
+                <Label fx:id="lblNhanKhau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
                 <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
                 <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
-            <Label fx:id="lblCanHo1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trú" />
+                <Label fx:id="lblCanHo1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trú" />
                 <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
                     <HBox.margin><Insets left="120.0" /></HBox.margin>
                 </TextField>
@@ -57,42 +57,37 @@
                             <PropertyValueFactory property="id" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colMaHo" prefWidth="100" text="Mã Hộ">
+                    <TableColumn fx:id="colMaHo" prefWidth="100" text="Số hộ khẩu">
                         <cellValueFactory>
                             <PropertyValueFactory property="maHo" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colHoTen" prefWidth="150" text="Họ Tên">
+                    <TableColumn fx:id="colHoTen" prefWidth="150.0" text="Số nhà">
                         <cellValueFactory>
                             <PropertyValueFactory property="hoTen" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colNgaySinh" prefWidth="120" text="Ngày sinh">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="ngaySinh" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="colGioiTinh" prefWidth="80" text="Giới tính">
+                    <TableColumn fx:id="colGioiTinh" prefWidth="156.79998779296875" text="Đường">
                         <cellValueFactory>
                             <PropertyValueFactory property="gioiTinh" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colDanToc" prefWidth="100" text="Dân tộc">
+                    <TableColumn fx:id="colDanToc" prefWidth="164.0" text="Phường ">
                         <cellValueFactory>
                             <PropertyValueFactory property="danToc" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colCCCD" prefWidth="150" text="CCCD">
+                    <TableColumn fx:id="colCCCD" prefWidth="123.99993896484375" text="Quận">
                         <cellValueFactory>
                             <PropertyValueFactory property="cccd" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colNgheNghiep" prefWidth="92.800048828125" text="Nghề nghiệp">
+                    <TableColumn fx:id="colNgaySinh" prefWidth="76.800048828125" text="Ngày làm">
                         <cellValueFactory>
-                            <PropertyValueFactory property="ngheNghiep" />
+                            <PropertyValueFactory property="ngaySinh" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colAction" prefWidth="95.0" text="Action" />
+                    <TableColumn fx:id="colAction" prefWidth="107.2000732421875" text="Action" />
                 </columns>
             </TableView>
 

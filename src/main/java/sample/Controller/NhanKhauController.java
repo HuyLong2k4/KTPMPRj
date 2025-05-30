@@ -1,6 +1,9 @@
 package main.java.sample.Controller;
 
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import main.java.sample.Model.NhanKhau;
 
 import java.sql.*;
@@ -329,7 +333,26 @@ public class NhanKhauController {
     }
 
 
+//router
+@FXML
+private Label lblTrangChu;
 
+    @FXML
+    public void handleHomePageClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Controller/HomePage.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblTrangChu.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Trang Chủ");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Lỗi chuyển trang: " + e.getMessage());
+
+        }
+    }
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
