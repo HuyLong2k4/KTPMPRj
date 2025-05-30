@@ -5,7 +5,7 @@ import javafx.beans.property.*;
 public class HoKhau {
     private IntegerProperty soHoKhau;
     private StringProperty soNha;
-    private StringProperty duong;git
+    private StringProperty duong;
     private StringProperty phuong;
     private StringProperty quan;
     private ObjectProperty<java.time.LocalDate> ngayLamHoKhau;

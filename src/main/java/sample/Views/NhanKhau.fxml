@@ -23,7 +23,7 @@
                 <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
                 <Label fx:id="lblHoKhau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
                 <Label fx:id="lblNhanKhau" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
-                <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
                 <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
             <Label fx:id="lblCanHo1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trú" />
                 <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">

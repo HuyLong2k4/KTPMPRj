@@ -20,7 +20,7 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+                <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
                 <Label fx:id="lblHoKhau" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Hộ khẩu" />
                 <Label fx:id="lblNhanKhau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
                 <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
