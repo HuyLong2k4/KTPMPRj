@@ -1,6 +1,5 @@
 package main.java.sample.Controller;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -183,10 +182,96 @@ public class NhanKhauController {
     }
 
     private void onEdit(NhanKhau nk) {
-        // Hiển thị dialog sửa thông tin hoặc chuyển sang màn hình sửa
-        showAlert(Alert.AlertType.INFORMATION, "Sửa nhân khẩu", "Chức năng sửa nhân khẩu cho ID: " + nk.getId());
-        // TODO: triển khai chức năng sửa
+        Dialog<NhanKhau> dialog = new Dialog<>();
+        dialog.setTitle("Sửa nhân khẩu");
+        dialog.setHeaderText("Cập nhật thông tin nhân khẩu");
+
+        ButtonType saveButtonType = new ButtonType("Lưu", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField maHoField = new TextField(nk.getMaHo());
+        TextField hoTenField = new TextField(nk.getHoTen());
+        TextField ngaySinhField = new TextField(nk.getNgaySinh() != null ? nk.getNgaySinh().toString() : "");
+
+        ChoiceBox<String> gioiTinhChoice = new ChoiceBox<>();
+        gioiTinhChoice.getItems().addAll("Nam", "Nu");
+        gioiTinhChoice.setValue(nk.getGioiTinh());
+
+        TextField danTocField = new TextField(nk.getDanToc());
+        TextField cccdField = new TextField(nk.getCccd());
+        TextField ngheNghiepField = new TextField(nk.getNgheNghiep());
+
+        grid.add(new Label("Mã hộ:"), 0, 0);
+        grid.add(maHoField, 1, 0);
+        grid.add(new Label("Họ tên:"), 0, 1);
+        grid.add(hoTenField, 1, 1);
+        grid.add(new Label("Ngày sinh (yyyy-MM-dd):"), 0, 2);
+        grid.add(ngaySinhField, 1, 2);
+        grid.add(new Label("Giới tính:"), 0, 3);
+        grid.add(gioiTinhChoice, 1, 3);
+        grid.add(new Label("Dân tộc:"), 0, 4);
+        grid.add(danTocField, 1, 4);
+        grid.add(new Label("CCCD:"), 0, 5);
+        grid.add(cccdField, 1, 5);
+        grid.add(new Label("Nghề nghiệp:"), 0, 6);
+        grid.add(ngheNghiepField, 1, 6);
+
+        dialog.getDialogPane().setContent(grid);
+
+        // Convert the result when Save is clicked
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveButtonType) {
+                try {
+                    LocalDate ngaySinh = LocalDate.parse(ngaySinhField.getText().trim());
+                    return new NhanKhau(nk.getId(),
+                            maHoField.getText().trim(),
+                            hoTenField.getText().trim(),
+                            ngaySinh,
+                            gioiTinhChoice.getValue(),
+                            danTocField.getText().trim(),
+                            cccdField.getText().trim(),
+                            ngheNghiepField.getText().trim());
+                } catch (Exception e) {
+                    showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Ngày sinh phải đúng định dạng yyyy-MM-dd");
+                    return null;
+                }
+            }
+            return null;
+        });
+
+        Optional<NhanKhau> result = dialog.showAndWait();
+
+        result.ifPresent(updatedNk -> {
+            try (Connection conn = DatabaseConnection.getConnection()) {
+                String sql = "UPDATE nhankhau SET hoten=?, ngaysinh=?, gioitinh=?, dantoc=?, cccd=?, nghenghiep=? WHERE id=?";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, updatedNk.getHoTen());
+                ps.setDate(2, Date.valueOf(updatedNk.getNgaySinh()));
+                ps.setString(3, updatedNk.getGioiTinh());
+                ps.setString(4, updatedNk.getDanToc());
+                ps.setString(5, updatedNk.getCccd());
+                ps.setString(6, updatedNk.getNgheNghiep());
+                ps.setInt(7, updatedNk.getId());
+                int rows = ps.executeUpdate();
+
+                if (rows > 0) {
+                    showAlert(Alert.AlertType.INFORMATION, "Thành công", "Cập nhật nhân khẩu thành công!");
+                    loadData();  // Reload dữ liệu mới
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Lỗi", "Cập nhật nhân khẩu thất bại!");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Lỗi DB", "Lỗi khi cập nhật: " + e.getMessage());
+            }
+        });
     }
+
 
     private void onDelete(NhanKhau nk) {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);

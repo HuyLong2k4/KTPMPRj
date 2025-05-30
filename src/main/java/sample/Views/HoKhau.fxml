@@ -50,41 +50,36 @@
             </HBox>
 
             <!-- Tiêu đề cột -->
-            <TableView fx:id="tableResidents" prefHeight="500" prefWidth="900">
+            <TableView fx:id="tableHouseholds" prefHeight="500" prefWidth="900">
                 <columns>
-                    <TableColumn fx:id="colID" prefWidth="60" text="ID">
+                    <TableColumn fx:id="colSoHoKhau" prefWidth="100" text="Số hộ khẩu">
                         <cellValueFactory>
-                            <PropertyValueFactory property="id" />
+                            <PropertyValueFactory property="sohokhau" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colMaHo" prefWidth="100" text="Số hộ khẩu">
+                    <TableColumn fx:id="colSoNha" prefWidth="150.0" text="Số nhà">
                         <cellValueFactory>
-                            <PropertyValueFactory property="maHo" />
+                            <PropertyValueFactory property="sonha" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colHoTen" prefWidth="150.0" text="Số nhà">
+                    <TableColumn fx:id="colDuong" prefWidth="156.79998779296875" text="Đường">
                         <cellValueFactory>
-                            <PropertyValueFactory property="hoTen" />
+                            <PropertyValueFactory property="duong" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colGioiTinh" prefWidth="156.79998779296875" text="Đường">
+                    <TableColumn fx:id="colPhuong" prefWidth="164.0" text="Phường ">
                         <cellValueFactory>
-                            <PropertyValueFactory property="gioiTinh" />
+                            <PropertyValueFactory property="phuong" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colDanToc" prefWidth="164.0" text="Phường ">
+                    <TableColumn fx:id="colQuan" prefWidth="123.99993896484375" text="Quận">
                         <cellValueFactory>
-                            <PropertyValueFactory property="danToc" />
+                            <PropertyValueFactory property="quan" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colCCCD" prefWidth="123.99993896484375" text="Quận">
+                    <TableColumn fx:id="colNgayLamHoKhau" prefWidth="76.800048828125" text="Ngày làm">
                         <cellValueFactory>
-                            <PropertyValueFactory property="cccd" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="colNgaySinh" prefWidth="76.800048828125" text="Ngày làm">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="ngaySinh" />
+                            <PropertyValueFactory property="ngaylamhokhau" />
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn fx:id="colAction" prefWidth="107.2000732421875" text="Action" />
