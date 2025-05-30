@@ -5,19 +5,111 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 public class HomePageController {
 
+    @FXML
+    private Label lblTongSoHoKhau;
 
+    @FXML
+    private Label lblTongSoNhanKhau;
+
+    @FXML
+    private Label lblTongSoKhoanThu;
+
+    @FXML
+    public void initialize() {
+        loadSummaryData();
+    }
+
+    private void loadSummaryData() {
+        try (Connection conn = database.DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement()) {
+
+            // Đếm số hộ khẩu
+            ResultSet rs1 = stmt.executeQuery("SELECT COUNT(*) FROM hokhau");
+            if (rs1.next()) {
+                int countHoKhau = rs1.getInt(1);
+                lblTongSoHoKhau.setText("Tổng số: " + countHoKhau);
+            }
+
+            // Đếm số nhân khẩu
+            ResultSet rs2 = stmt.executeQuery("SELECT COUNT(*) FROM nhankhau");
+            if (rs2.next()) {
+                int countNhanKhau = rs2.getInt(1);
+                lblTongSoNhanKhau.setText("Tổng số: " + countNhanKhau);
+            }
+
+            // Đếm số khoản thu
+            ResultSet rs3 = stmt.executeQuery("SELECT COUNT(*) FROM khoanthu");
+            if (rs3.next()) {
+                int countKhoanThu = rs3.getInt(1);
+                lblTongSoKhoanThu.setText("Tổng số: " + countKhoanThu);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            lblTongSoHoKhau.setText("Lỗi");
+            lblTongSoNhanKhau.setText("Lỗi");
+            lblTongSoKhoanThu.setText("Lỗi");
+        }
+    }
+
+
+//    router button
+    @FXML
+    private Button btnNhanKhau;
+
+    @FXML
+    public void handleNhanKhauClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) btnNhanKhau.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Nhân Khẩu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private Button btnKhoanThu;
+
+    @FXML
+    public void handleKhoanThuClickBtn() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) btnKhoanThu.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Khoản Thu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+
+//    router
     @FXML
     private Label lblNhanKhau;
 
     @FXML
-    public void handleNhanKhauClick() {
+    public void handleNhanKhauClickBtn() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
             Parent canHoPage = loader.load();

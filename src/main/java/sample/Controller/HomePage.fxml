@@ -46,9 +46,9 @@
                <padding>
                   <Insets bottom="10" left="10" right="10" top="10" />
                </padding>
-               <Label text="Căn hộ" />
-               <Label fx:id="lblTongSoCanHo" text="Tổng số: 0" />
-               <Button fx:id="btnCanHo" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Label text="Hộ Khẩu" />
+               <Label fx:id="lblTongSoHoKhau" text="Tổng số: 0" />
+               <Button fx:id="btnHoKhau" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
                </Button>
                <HBox.margin>
                   <Insets right="80.0" />
@@ -58,9 +58,9 @@
                <padding>
                   <Insets bottom="10" left="10" right="10" top="10" />
                </padding>
-               <Label text="Cư dân" />
-               <Label fx:id="lblTongSoCuDan" text="Tổng số: 0" />
-               <Button fx:id="btnCuDan" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Label text="Nhân Khẩu" />
+               <Label fx:id="lblTongSoNhanKhau" text="Tổng số: 0" />
+               <Button fx:id="btnNhanKhau" onMouseClicked="#handleNhanKhauClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
                </Button>
                <HBox.margin>
                   <Insets right="80.0" />
@@ -72,7 +72,7 @@
                </padding>
                <Label text="Khoản thu" />
                <Label fx:id="lblTongSoKhoanThu" text="Tổng số: 0" />
-               <Button fx:id="btnKhoanThu" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnKhoanThu" onMouseClicked="#handleKhoanThuClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
                </Button>
             </VBox>
          </HBox>
