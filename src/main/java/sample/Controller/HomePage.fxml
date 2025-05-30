@@ -21,9 +21,9 @@
             <Insets bottom="15" left="15" right="15" top="15" />
          </padding>
          <children>
-            <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
-            <Label fx:id="lblCanHo" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
-            <Label fx:id="lblCuDan" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
+            <Label fx:id="lblTrangChu"  style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+            <Label fx:id="lblHoKHau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
+            <Label fx:id="lblNhanKhau" onMouseClicked="#handleNhanKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
             <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
             <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
             <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
@@ -47,7 +47,7 @@
                </padding>
                <Label text="Căn hộ" />
                <Label fx:id="lblTongSoCanHo" text="Tổng số: 0" />
-               <Button fx:id="btnCanHo" onMouseClicked="#handleCanHoClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnCanHo" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
                </Button>
                <HBox.margin>
                   <Insets right="80.0" />
@@ -59,7 +59,7 @@
                </padding>
                <Label text="Cư dân" />
                <Label fx:id="lblTongSoCuDan" text="Tổng số: 0" />
-               <Button fx:id="btnCuDan" onMouseClicked="#handleCuDanClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnCuDan" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
                </Button>
                <HBox.margin>
                   <Insets right="80.0" />
@@ -71,7 +71,7 @@
                </padding>
                <Label text="Khoản thu" />
                <Label fx:id="lblTongSoKhoanThu" text="Tổng số: 0" />
-               <Button fx:id="btnKhoanThu" onMouseClicked="#handleKhoanthuClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnKhoanThu" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
                </Button>
             </VBox>
          </HBox>

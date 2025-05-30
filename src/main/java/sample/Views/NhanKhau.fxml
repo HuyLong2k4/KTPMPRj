@@ -20,9 +20,9 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
-                <Label fx:id="lblCanHo" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
-                <Label fx:id="lblCuDan" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
+                <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+                <Label fx:id="lblHoKhau" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
+                <Label fx:id="lblNhanKhau" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Nhân khẩu" />
                 <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
                 <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
             <Label fx:id="lblCanHo1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trú" />
