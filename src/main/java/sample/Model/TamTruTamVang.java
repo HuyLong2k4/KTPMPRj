@@ -6,7 +6,6 @@ import java.sql.Date;
 public class TamTruTamVang {
     private int id;
     private int nhanKhauId;
-    private String hoTenNhanKhau;
     private String trangThai;
     private String diaChiTamTruTamVang;
     private Date thoiGian;
@@ -55,14 +54,6 @@ public class TamTruTamVang {
 
     public void setThoiGian(Date thoiGian) {
         this.thoiGian = thoiGian;
-    }
-
-    public String getHoTenNhanKhau() {
-        return hoTenNhanKhau;
-    }
-
-    public void setHoTenNhanKhau(String hoTenNhanKhau) {
-        this.hoTenNhanKhau = hoTenNhanKhau;
     }
 
     public String getNoiDungDeNghi() {

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.KhoanThuController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.ThongKeController">
 
     <!-- Top navigation bar -->
     <top>
@@ -14,12 +20,12 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
-                <Label fx:id="lblCanHo" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
-                <Label fx:id="lblCuDan" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
-                <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
-                <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Thống kê" />
-                <Label fx:id="lblLuuTru" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trú" />
+                <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+                <Label fx:id="lblHoKhau" onMouseClicked="#handleHoKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
+                <Label fx:id="lblNhanKhau" onMouseClicked="#handleNhanKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
+                <Label fx:id="lblThongKe"  style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Thống kê" />
+                <Label fx:id="lblTinhTrangLuuTru" onMouseClicked="#handleTinhTrangClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trữ" />
                 <TextField fx:id="txtGlobalSearch" prefWidth="350" promptText="Tìm kiếm...">
                     <HBox.margin>
                         <Insets left="120.0" />
@@ -40,12 +46,12 @@
                         <PropertyValueFactory property="Stt" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="colState" prefWidth="56.0" text="Trạng thái">
+                <TableColumn fx:id="colState" prefWidth="75.99999618530273" text="Trạng thái">
                     <cellValueFactory>
                         <PropertyValueFactory property="State" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="colName" prefWidth="303.0" text="Tên khoản thu">
+                <TableColumn fx:id="colName" prefWidth="283.2000274658203" text="Tên khoản thu">
                     <cellValueFactory>
                         <PropertyValueFactory property="Name" />
                     </cellValueFactory>
@@ -60,7 +66,7 @@
                         <PropertyValueFactory property="TotalFees" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="colDay" prefWidth="243.0" text="Ngày thanh toán">
+                <TableColumn fx:id="colDay" prefWidth="240.7999267578125" text="Ngày thanh toán">
                     <cellValueFactory>
                         <PropertyValueFactory property="Day" />
                     </cellValueFactory>

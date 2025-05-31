@@ -36,7 +36,7 @@ public class LoginController {
         }
 
         try (Connection conn = database.DatabaseConnection.getConnection()) {
-            String sql = "SELECT * FROM users WHERE username = ? AND password_hash = ?";
+            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);

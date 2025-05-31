@@ -20,12 +20,12 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <children>
-                <Label fx:id="lblTrangChu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
-                <Label fx:id="lblCanHo" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Căn hộ" />
-                <Label fx:id="lblCuDan" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
-                <Label fx:id="lblKhoanThu" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
-                <Label fx:id="lblThongke" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
-                <Label fx:id="lblCanHo1" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Tình trạng lưu trú" />
+                <Label fx:id="lblTrangChu" onMouseClicked="#handleHomePageClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Trang chủ" />
+                <Label fx:id="lblHoKhau" onMouseClicked="#handleHoKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
+                <Label fx:id="lblNhanKhau" onMouseClicked="#handleNhanKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
+                <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
+                <Label fx:id="lblThongKe" onMouseClicked="#handleThongKeClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
+                <Label fx:id="lblTinhTrangLuuTru" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Tình trạng lưu trữ" />
                 <TextField fx:id="txtGlobalSearch" prefWidth="350" promptText="Tìm kiếm..." >
                 <HBox.margin><Insets left="120.0" /></HBox.margin></TextField>
             </children>
@@ -53,7 +53,7 @@
                     </TableColumn>
                     <TableColumn fx:id="colHoTenNhanKhau" prefWidth="100" text="Họ Tên">
                         <cellValueFactory>
-                            <PropertyValueFactory property="HoTenNhanKhau" />
+                            <PropertyValueFactory property="hoTenNhanKhau" />
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn fx:id="colTrangThai" prefWidth="100" text="Trạng thái">
