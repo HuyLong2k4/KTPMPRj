@@ -177,7 +177,7 @@
          <padding>
             <Insets bottom="15" left="15" right="15" top="15" />
          </padding>
-         <Button prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Danh sách nộp phí" />
+         <Button fx:id="btnDSNopPhi" onMouseClicked="#handleDSNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Danh sách nộp phí" />
          <Button fx:id="btnNopPhi" onMouseClicked="#handleNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Nộp phí" />
       </HBox>
    </bottom>

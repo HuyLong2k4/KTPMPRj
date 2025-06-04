@@ -201,6 +201,25 @@ public class HomePageController {
     }
 
     @FXML
+    private Button btnDSNopPhi;
+
+    @FXML
+    public void handleDSNopPhiClickBtn() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NopPhi.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) btnDSNopPhi.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Nộp Phí");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+    @FXML
     private Label lblThongke;
 
     @FXML
