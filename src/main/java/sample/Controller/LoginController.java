@@ -46,10 +46,10 @@ public class LoginController {
                 // Chuyển sang màn hình chính
                 String role = rs.getString("vaitro");
                 FXMLLoader loader;
-                if("ke_toan".equals(role)) {
+                if("to_truong".equals(role)) {
                      loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-                } else if ("to_truong".equals(role)) {
-                     loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+                } else if ("ke_toan".equals(role)) {
+                     loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HomePage2.fxml"));
                 } else {
                     showAlert(Alert.AlertType.ERROR, "Tài khoản không có vai trò phù hợp.");
                     return;

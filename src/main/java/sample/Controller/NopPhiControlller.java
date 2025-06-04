@@ -37,9 +37,6 @@ public class NopPhiControlller {
     @FXML
     private TableColumn<NopTien, String> colSoTien;
 
-    @FXML
-    private TableColumn<NopTien, String> colAction;
-
     private final ObservableList<NopTien> listNopTien = FXCollections.observableArrayList();
 
     @FXML
@@ -70,7 +67,6 @@ public class NopPhiControlller {
         colSoTien.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.format("%,.0f đ", cellData.getValue().getSoTien())));
 
-        colAction.setCellValueFactory(cellData -> new SimpleStringProperty("")); // placeholder
     }
 
     private String getHoTenHoKhauById(int hoKhauId) {
