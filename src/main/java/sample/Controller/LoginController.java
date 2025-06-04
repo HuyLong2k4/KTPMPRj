@@ -44,9 +44,18 @@ public class LoginController {
 
             if (rs.next()) {
                 // Chuyển sang màn hình chính
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-                Parent root = loader.load();
+                String role = rs.getString("vaitro");
+                FXMLLoader loader;
+                if("ke_toan".equals(role)) {
+                     loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+                } else if ("to_truong".equals(role)) {
+                     loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Tài khoản không có vai trò phù hợp.");
+                    return;
+                }
 
+                Parent root = loader.load();
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.setTitle("Trang chính");

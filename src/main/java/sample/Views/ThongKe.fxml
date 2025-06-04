@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.ThongKeController">
+<BorderPane prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.sample.Controller.ThongKeController">
 
     <!-- Top navigation bar -->
     <top>
@@ -26,7 +26,7 @@
                 <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
                 <Label fx:id="lblThongKe"  style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Thống kê" />
                 <Label fx:id="lblTinhTrangLuuTru" onMouseClicked="#handleTinhTrangClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tình trạng lưu trữ" />
-                <TextField fx:id="txtGlobalSearch" prefWidth="350" promptText="Tìm kiếm...">
+                <TextField fx:id="txtGlobalSearch" prefWidth="299.0" promptText="Tìm kiếm...">
                     <HBox.margin>
                         <Insets left="120.0" />
                     </HBox.margin>
@@ -74,12 +74,11 @@
             </columns>
         </TableView>
         </VBox>
-    </center>
+    </center>s
 
     <!-- Bottom buttons -->
     <bottom>
         <HBox alignment="CENTER" spacing="10"><padding><Insets bottom="10" left="10" right="10" top="10" /> </padding>
-            <Button fx:id="btnAdd" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;" text="Tạo khoảm thu" />
             <Button fx:id="btnPdf" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;" text="Tạo PDF" />
         </HBox>
     </bottom>

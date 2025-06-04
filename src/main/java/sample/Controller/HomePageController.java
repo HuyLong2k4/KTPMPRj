@@ -163,6 +163,44 @@ public class HomePageController {
     }
 
     @FXML
+    private Button btnHoKhau;
+
+    @FXML
+    public void handleHoKhauClickBtn() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) btnHoKhau.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan lý Hộ Khẩu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private Button btnNopPhi;
+
+    @FXML
+    public void handleNopPhiClickBtn() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThuPhi.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) btnNopPhi.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Nộp Phí");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
+
+    @FXML
     private Label lblThongke;
 
     @FXML
