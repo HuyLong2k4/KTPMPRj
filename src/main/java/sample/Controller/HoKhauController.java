@@ -177,10 +177,87 @@ public class HoKhauController {
         });
     }
 
-    private void onEdit(HoKhau nk) {
+    private void onEdit(HoKhau hk) {
         // Hiển thị dialog sửa thông tin hoặc chuyển sang màn hình sửa
-        showAlert(Alert.AlertType.INFORMATION, "Sửa nhân khẩu", "Chức năng sửa nhân khẩu cho ID: " + nk.getSoHoKhau());
-        // TODO: triển khai chức năng sửa
+        Dialog<HoKhau> dialog = new Dialog<>();
+        dialog.setTitle("Sưa hộ khẩu");
+        dialog.setHeaderText("Cập nhật thông tin hộ khẩu");
+
+        ButtonType saveBtn = new ButtonType("Lưu", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveBtn, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20));
+
+        TextField soHoKhauField = new TextField(String.valueOf(hk.getSoHoKhau()));
+        soHoKhauField.setDisable(true); // không cho phép chỉnh sửa số hộ khẩu
+        TextField soNhaField = new TextField(hk.getSoNha());
+        TextField duongField = new TextField(hk.getDuong());
+        TextField phuongField = new TextField(hk.getPhuong());
+        TextField quanField = new TextField(hk.getQuan());
+        DatePicker ngayLamHoKhauPicker = new DatePicker(hk.getNgayLamHoKhau());
+
+        grid.add(new Label("Số hộ khẩu:"), 0, 0);
+        grid.add(soHoKhauField, 1, 0);
+        grid.add(new Label("Số nhà:"), 0, 1);
+        grid.add(soNhaField, 1, 1);
+        grid.add(new Label("Đường:"), 0, 2);
+        grid.add(duongField, 1, 2);
+        grid.add(new Label("Phường:"), 0, 3);
+        grid.add(phuongField, 1, 3);
+        grid.add(new Label("Quận:"), 0, 4);
+        grid.add(quanField, 1, 4);
+        grid.add(new Label("Ngày làm hộ khẩu:"), 0, 5);
+        grid.add(ngayLamHoKhauPicker, 1, 5);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveBtn) {
+                try {
+                    return new HoKhau(
+                            hk.getSoHoKhau(),
+                            soNhaField.getText().trim(),
+                            duongField.getText().trim(),
+                            phuongField.getText().trim(),
+                            quanField.getText().trim(),
+                            ngayLamHoKhauPicker.getValue()
+                    );
+                } catch (Exception e) {
+                    showAlert(Alert.AlertType.ERROR, "Lỗi dữ liệu", "Vui lòng kiểm tra lại thông tin nhập.");
+                    return null;
+                }
+            }
+            return null;
+        });
+
+        Optional<HoKhau> result = dialog.showAndWait();
+
+        result.ifPresent(updatedHK -> {
+            try (Connection conn = DatabaseConnection.getConnection()) {
+                String sql = "UPDATE hokhau SET sonha=?, duong=?, phuong=?, quan=?, ngaylamhokhau=? WHERE sohokhau=?";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, updatedHK.getSoNha());
+                ps.setString(2, updatedHK.getDuong());
+                ps.setString(3, updatedHK.getPhuong());
+                ps.setString(4, updatedHK.getQuan());
+                ps.setDate(5, Date.valueOf(updatedHK.getNgayLamHoKhau()));
+                ps.setInt(6, updatedHK.getSoHoKhau());
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0) {
+                    showAlert(Alert.AlertType.INFORMATION, "Thành công", "Thông tin hộ khẩu đã được cập nhật.");
+                    loadData();
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Lỗi cập nhật", "Không thể cập nhật hộ khẩu.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Lỗi SQL", "Không thể cập nhật: " + e.getMessage());
+            }
+        });
     }
 
     private void onDelete(HoKhau nk) {

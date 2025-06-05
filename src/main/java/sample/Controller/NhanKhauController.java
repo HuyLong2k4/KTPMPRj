@@ -196,7 +196,11 @@ public class NhanKhauController {
 
         TextField maHoField = new TextField(nk.getMaHo());
         TextField hoTenField = new TextField(nk.getHoTen());
-        TextField ngaySinhField = new TextField(nk.getNgaySinh() != null ? nk.getNgaySinh().toString() : "");
+        DatePicker ngaySinhPicker = new DatePicker();
+        if (nk.getNgaySinh() != null) {
+            ngaySinhPicker.setValue(nk.getNgaySinh());
+        }
+
 
         ChoiceBox<String> gioiTinhChoice = new ChoiceBox<>();
         gioiTinhChoice.getItems().addAll("Nam", "Nu");
@@ -210,8 +214,8 @@ public class NhanKhauController {
         grid.add(maHoField, 1, 0);
         grid.add(new Label("Họ tên:"), 0, 1);
         grid.add(hoTenField, 1, 1);
-        grid.add(new Label("Ngày sinh (yyyy-MM-dd):"), 0, 2);
-        grid.add(ngaySinhField, 1, 2);
+        grid.add(new Label("Ngày sinh:"), 0, 2);
+        grid.add(ngaySinhPicker, 1, 2);
         grid.add(new Label("Giới tính:"), 0, 3);
         grid.add(gioiTinhChoice, 1, 3);
         grid.add(new Label("Dân tộc:"), 0, 4);
@@ -227,7 +231,11 @@ public class NhanKhauController {
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == saveButtonType) {
                 try {
-                    LocalDate ngaySinh = LocalDate.parse(ngaySinhField.getText().trim());
+                    LocalDate ngaySinh = ngaySinhPicker.getValue();
+                    if (ngaySinh == null) {
+                        showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Vui lòng chọn ngày sinh.");
+                        return null;
+                    }
                     return new NhanKhau(nk.getId(),
                             maHoField.getText().trim(),
                             hoTenField.getText().trim(),
@@ -328,8 +336,7 @@ public class NhanKhauController {
         maHoField.setPromptText("Mã hộ");
         TextField hoTenField = new TextField();
         hoTenField.setPromptText("Họ tên");
-        TextField ngaySinhField = new TextField();
-        ngaySinhField.setPromptText("Ngày sinh (yyyy-MM-dd)");
+        DatePicker ngaySinhPicker = new DatePicker();
 
         // Thay TextField giới tính bằng ChoiceBox
         ChoiceBox<String> gioiTinhChoice = new ChoiceBox<>();
@@ -348,7 +355,7 @@ public class NhanKhauController {
         grid.add(new Label("Họ tên:"), 0, 1);
         grid.add(hoTenField, 1, 1);
         grid.add(new Label("Ngày sinh:"), 0, 2);
-        grid.add(ngaySinhField, 1, 2);
+        grid.add(ngaySinhPicker, 1, 2);
         grid.add(new Label("Giới tính:"), 0, 3);
         grid.add(gioiTinhChoice, 1, 3);
         grid.add(new Label("Dân tộc:"), 0, 4);
@@ -363,7 +370,11 @@ public class NhanKhauController {
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == addButtonType) {
                 try {
-                    LocalDate ngaySinh = LocalDate.parse(ngaySinhField.getText().trim());
+                    LocalDate ngaySinh = ngaySinhPicker.getValue();
+                    if (ngaySinh == null) {
+                        showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Vui lòng chọn ngày sinh.");
+                        return null;
+                    }
                     return new NhanKhau(0,
                             maHoField.getText().trim(),
                             hoTenField.getText().trim(),

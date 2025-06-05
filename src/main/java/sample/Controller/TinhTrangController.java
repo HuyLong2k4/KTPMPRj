@@ -128,6 +128,12 @@ public class TinhTrangController {
         TamTruTamVang newItem = showEditDialog(null);
         if (newItem != null) {
             try (Connection conn = DatabaseConnection.getConnection()) {
+
+                if (isNhanKhauAlreadyRegistered(conn, newItem.getNhanKhauId(), newItem.getTrangThai())) {
+                    showAlert(Alert.AlertType.WARNING, "Trùng thông tin", "Nhân khẩu đã được đăng ký tạm trú/tạm vắng ở trạng thái này.");
+                    return;
+                }
+
                 String sql = "INSERT INTO tamtrutamvang (nhankhau_id, trangThai, diaChiTamTruTamVang, thoiGian, noiDungDeNghi) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setInt(1, newItem.getNhanKhauId());
@@ -144,6 +150,21 @@ public class TinhTrangController {
             }
         }
     }
+
+    private boolean isNhanKhauAlreadyRegistered(Connection conn, int nhanKhauId, String trangThai) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM tamtrutamvang WHERE nhankhau_id = ? AND trangThai = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, nhanKhauId);
+            ps.setString(2, trangThai);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
+
 
     private void addActionButtons() {
         colAction.setCellFactory(param -> new TableCell<>() {
@@ -192,7 +213,7 @@ public class TinhTrangController {
         ComboBox<String> trangThaiComboBox = new ComboBox<>();
         trangThaiComboBox.getItems().addAll("tam_tru", "tam_vang");
         TextField diaChiField = new TextField();
-        TextField thoiGianField = new TextField();
+        DatePicker thoiGianPicker = new DatePicker();
         TextField noiDungField = new TextField();
 
         if (item != null) {
@@ -200,9 +221,9 @@ public class TinhTrangController {
             trangThaiComboBox.setValue(item.getTrangThai());
             diaChiField.setText(item.getDiaChiTamTruTamVang());
             if (item.getThoiGian() != null) {
-                thoiGianField.setText(item.getThoiGian().toString()); // chuyển Date thành String
+                thoiGianPicker.setValue(item.getThoiGian().toLocalDate()); // chuyển Date thành String
             } else {
-                thoiGianField.setText("");
+                thoiGianPicker.setValue(null);
             }
 
             noiDungField.setText(item.getNoiDungDeNghi());
@@ -215,7 +236,7 @@ public class TinhTrangController {
         grid.add(new Label("Địa chỉ:"), 0, 2);
         grid.add(diaChiField, 1, 2);
         grid.add(new Label("Thời gian:"), 0, 3);
-        grid.add(thoiGianField, 1, 3);
+        grid.add(thoiGianPicker, 1, 3);
         grid.add(new Label("Nội dung đề nghị:"), 0, 4);
         grid.add(noiDungField, 1, 4);
 
@@ -235,15 +256,9 @@ public class TinhTrangController {
                 }
                 result.setTrangThai(trangThaiComboBox.getValue());
                 result.setDiaChiTamTruTamVang(diaChiField.getText().trim());
-                String ngayStr = thoiGianField.getText().trim();
-                if (!ngayStr.isEmpty()) {
-                    try {
-                        LocalDate localDate = LocalDate.parse(ngayStr); // parse sang LocalDate
-                        result.setThoiGian(java.sql.Date.valueOf(localDate)); // chuyển sang java.sql.Date
-                    } catch (Exception e) {
-                        showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Ngày tháng không hợp lệ (định dạng yyyy-MM-dd)");
-                        return null;
-                    }
+                LocalDate selectedDate = thoiGianPicker.getValue();
+                if (selectedDate != null) {
+                    result.setThoiGian(Date.valueOf(selectedDate));
                 } else {
                     result.setThoiGian(null);
                 }
