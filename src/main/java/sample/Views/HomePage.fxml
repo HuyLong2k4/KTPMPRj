@@ -84,23 +84,23 @@
                   <Insets right="180.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="146.0" prefWidth="290.0" spacing="5" style="-fx-border-color: black;">
-               <padding>
-                  <Insets bottom="10" left="10" right="10" top="10" />
-               </padding>
-               <Label text="Khoản thu">
-                  <font>
-                     <Font size="20.0" />
-                  </font></Label>
-               <Label fx:id="lblTongSoKhoanThu" text="Tổng số: 0">
-                  <font>
-                     <Font size="16.0" />
-                  </font></Label>
-               <Button fx:id="btnKhoanThu" onMouseClicked="#handleKhoanThuClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Xem tất cả">
-                  <font>
-                     <Font size="20.0" />
-                  </font></Button>
-            </VBox>
+<!--            <VBox prefHeight="146.0" prefWidth="290.0" spacing="5" style="-fx-border-color: black;">-->
+<!--               <padding>-->
+<!--                  <Insets bottom="10" left="10" right="10" top="10" />-->
+<!--               </padding>-->
+<!--               <Label text="Khoản thu">-->
+<!--                  <font>-->
+<!--                     <Font size="20.0" />-->
+<!--                  </font></Label>-->
+<!--               <Label fx:id="lblTongSoKhoanThu" text="Tổng số: 0">-->
+<!--                  <font>-->
+<!--                     <Font size="16.0" />-->
+<!--                  </font></Label>-->
+<!--               <Button fx:id="btnKhoanThu" onMouseClicked="#handleKhoanThuClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Xem tất cả">-->
+<!--                  <font>-->
+<!--                     <Font size="20.0" />-->
+<!--                  </font></Button>-->
+<!--            </VBox>-->
          </HBox>
 
          <!-- Chart Section -->
@@ -137,14 +137,14 @@
    </center>
 
    <!-- Bottom Buttons -->
-   <bottom>
-      <HBox alignment="CENTER" spacing="15">
-         <padding>
-            <Insets bottom="15" left="15" right="15" top="15" />
-         </padding>
-         <Button fx:id="btnDSNopPhi" onMouseClicked="#handleDSNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Danh sách nộp phí" />
-         <Button fx:id="btnNopPhi" onMouseClicked="#handleNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Nộp phí" />
-      </HBox>
-   </bottom>
+<!--   <bottom>-->
+<!--      <HBox alignment="CENTER" spacing="15">-->
+<!--         <padding>-->
+<!--            <Insets bottom="15" left="15" right="15" top="15" />-->
+<!--         </padding>-->
+<!--         <Button fx:id="btnDSNopPhi" onMouseClicked="#handleDSNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Danh sách nộp phí" />-->
+<!--         <Button fx:id="btnNopPhi" onMouseClicked="#handleNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Nộp phí" />-->
+<!--      </HBox>-->
+<!--   </bottom>-->
 
 </BorderPane>

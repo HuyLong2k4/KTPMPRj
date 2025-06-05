@@ -46,7 +46,7 @@
                 <TextField fx:id="txtSearch" promptText="Tìm kiếm cư dân..." />
                 <Button onAction="#onSearch" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Tìm" />
                 <Button onAction="#onRefresh" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Tải lại" />
-                <Button onAction="#onAdd" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Thêm mới" />
+<!--                <Button onAction="#onAdd" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Thêm mới" />-->
             </HBox>
 
             <!-- Tiêu đề cột -->

@@ -22,8 +22,8 @@ public class HomePageController {
     @FXML
     private Label lblTongSoNhanKhau;
 
-    @FXML
-    private Label lblTongSoKhoanThu;
+//    @FXML
+//    private Label lblTongSoKhoanThu;
 
     @FXML
     public void initialize() {
@@ -49,17 +49,17 @@ public class HomePageController {
             }
 
             // Đếm số khoản thu
-            ResultSet rs3 = stmt.executeQuery("SELECT COUNT(*) FROM khoanthu");
-            if (rs3.next()) {
-                int countKhoanThu = rs3.getInt(1);
-                lblTongSoKhoanThu.setText("Tổng số: " + countKhoanThu);
-            }
+//            ResultSet rs3 = stmt.executeQuery("SELECT COUNT(*) FROM khoanthu");
+//            if (rs3.next()) {
+//                int countKhoanThu = rs3.getInt(1);
+//                lblTongSoKhoanThu.setText("Tổng số: " + countKhoanThu);
+//            }
 
         } catch (Exception e) {
             e.printStackTrace();
             lblTongSoHoKhau.setText("Lỗi");
             lblTongSoNhanKhau.setText("Lỗi");
-            lblTongSoKhoanThu.setText("Lỗi");
+//            lblTongSoKhoanThu.setText("Lỗi");
         }
     }
 
@@ -181,43 +181,43 @@ public class HomePageController {
         }
     }
 
-    @FXML
-    private Button btnNopPhi;
+//    @FXML
+//    private Button btnNopPhi;
+//
+//    @FXML
+//    public void handleNopPhiClickBtn() {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThuPhi.fxml"));
+//            Parent canHoPage = loader.load();
+//
+//            Stage stage = (Stage) btnNopPhi.getScene().getWindow();
+//            stage.setScene(new Scene(canHoPage));
+//            stage.setTitle("Nộp Phí");
+//            stage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            showAlert("Lỗi chuyển trang: " + e.getMessage());
+//        }
+//    }
 
-    @FXML
-    public void handleNopPhiClickBtn() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThuPhi.fxml"));
-            Parent canHoPage = loader.load();
-
-            Stage stage = (Stage) btnNopPhi.getScene().getWindow();
-            stage.setScene(new Scene(canHoPage));
-            stage.setTitle("Nộp Phí");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Lỗi chuyển trang: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private Button btnDSNopPhi;
-
-    @FXML
-    public void handleDSNopPhiClickBtn() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NopPhi.fxml"));
-            Parent canHoPage = loader.load();
-
-            Stage stage = (Stage) btnDSNopPhi.getScene().getWindow();
-            stage.setScene(new Scene(canHoPage));
-            stage.setTitle("Nộp Phí");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Lỗi chuyển trang: " + e.getMessage());
-        }
-    }
+//    @FXML
+//    private Button btnDSNopPhi;
+//
+//    @FXML
+//    public void handleDSNopPhiClickBtn() {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NopPhi.fxml"));
+//            Parent canHoPage = loader.load();
+//
+//            Stage stage = (Stage) btnDSNopPhi.getScene().getWindow();
+//            stage.setScene(new Scene(canHoPage));
+//            stage.setTitle("Nộp Phí");
+//            stage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            showAlert("Lỗi chuyển trang: " + e.getMessage());
+//        }
+//    }
 
     @FXML
     private Label lblThongKe;

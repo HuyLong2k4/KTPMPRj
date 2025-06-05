@@ -306,112 +306,112 @@ public class NhanKhauController2 {
     }
 
 
-    @FXML
-    private void onAdd(ActionEvent event) {
-        Dialog<NhanKhau> dialog = new Dialog<>();
-        dialog.setTitle("Thêm mới nhân khẩu");
-        dialog.setHeaderText("Nhập thông tin nhân khẩu");
-
-        ButtonType addButtonType = new ButtonType("Thêm", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
-
-        TextField maHoField = new TextField();
-        maHoField.setPromptText("Mã hộ");
-        TextField hoTenField = new TextField();
-        hoTenField.setPromptText("Họ tên");
-        TextField ngaySinhField = new TextField();
-        ngaySinhField.setPromptText("Ngày sinh (yyyy-MM-dd)");
-
-        // Thay TextField giới tính bằng ChoiceBox
-        ChoiceBox<String> gioiTinhChoice = new ChoiceBox<>();
-        gioiTinhChoice.getItems().addAll("Nam", "Nu");
-        gioiTinhChoice.getSelectionModel().selectFirst(); // Mặc định chọn "Nam"
-
-        TextField danTocField = new TextField();
-        danTocField.setPromptText("Dân tộc");
-        TextField cccdField = new TextField();
-        cccdField.setPromptText("CCCD");
-        TextField ngheNghiepField = new TextField();
-        ngheNghiepField.setPromptText("Nghề nghiệp");
-
-        grid.add(new Label("Mã hộ:"), 0, 0);
-        grid.add(maHoField, 1, 0);
-        grid.add(new Label("Họ tên:"), 0, 1);
-        grid.add(hoTenField, 1, 1);
-        grid.add(new Label("Ngày sinh:"), 0, 2);
-        grid.add(ngaySinhField, 1, 2);
-        grid.add(new Label("Giới tính:"), 0, 3);
-        grid.add(gioiTinhChoice, 1, 3);
-        grid.add(new Label("Dân tộc:"), 0, 4);
-        grid.add(danTocField, 1, 4);
-        grid.add(new Label("CCCD:"), 0, 5);
-        grid.add(cccdField, 1, 5);
-        grid.add(new Label("Nghề nghiệp:"), 0, 6);
-        grid.add(ngheNghiepField, 1, 6);
-
-        dialog.getDialogPane().setContent(grid);
-
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == addButtonType) {
-                try {
-                    LocalDate ngaySinh = LocalDate.parse(ngaySinhField.getText().trim());
-                    return new NhanKhau(0,
-                            maHoField.getText().trim(),
-                            hoTenField.getText().trim(),
-                            ngaySinh,
-                            gioiTinhChoice.getValue(),  // Lấy giá trị giới tính từ ChoiceBox
-                            danTocField.getText().trim(),
-                            cccdField.getText().trim(),
-                            ngheNghiepField.getText().trim());
-                } catch (Exception e) {
-                    showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Ngày sinh phải đúng định dạng yyyy-MM-dd");
-                    return null;
-                }
-            }
-            return null;
-        });
-
-        Optional<NhanKhau> result = dialog.showAndWait();
-
-        result.ifPresent(nk -> {
-            try (Connection conn = DatabaseConnection.getConnection()) {
-                String sql = "INSERT INTO nhankhau (hoten, ngaysinh, gioitinh, dantoc, cccd, nghenghiep) VALUES (?, ?, ?, ?, ?, ?)";
-                PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setString(1, nk.getHoTen());
-                ps.setDate(2, Date.valueOf(nk.getNgaySinh()));
-                ps.setString(3, nk.getGioiTinh());
-                ps.setString(4, nk.getDanToc());
-                ps.setString(5, nk.getCccd());
-                ps.setString(6, nk.getNgheNghiep());
-                ps.executeUpdate();
-
-                ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) {
-                    int newId = rs.getInt(1);
-
-                    // Chèn thêm vào bảng liên kết thanhvien_hokhau
-                    String sql2 = "INSERT INTO thanhvien_hokhau (hokhau_id, nhankhau_id, ngaythem, quanhevoichuho) VALUES (?, ?, ?, ?)";
-                    PreparedStatement ps2 = conn.prepareStatement(sql2);
-                    ps2.setString(1, nk.getMaHo());
-                    ps2.setInt(2, newId);
-                    ps2.setDate(3, new Date(System.currentTimeMillis()));
-                    ps2.setString(4, "Thành viên");
-                    ps2.executeUpdate();
-
-                    showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã thêm nhân khẩu mới!");
-                    loadData();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                showAlert(Alert.AlertType.ERROR, "Lỗi DB", "Không thể thêm nhân khẩu mới: " + e.getMessage());
-            }
-        });
-    }
+//    @FXML
+//    private void onAdd(ActionEvent event) {
+//        Dialog<NhanKhau> dialog = new Dialog<>();
+//        dialog.setTitle("Thêm mới nhân khẩu");
+//        dialog.setHeaderText("Nhập thông tin nhân khẩu");
+//
+//        ButtonType addButtonType = new ButtonType("Thêm", ButtonBar.ButtonData.OK_DONE);
+//        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+//
+//        GridPane grid = new GridPane();
+//        grid.setHgap(10);
+//        grid.setVgap(10);
+//        grid.setPadding(new Insets(20, 150, 10, 10));
+//
+//        TextField maHoField = new TextField();
+//        maHoField.setPromptText("Mã hộ");
+//        TextField hoTenField = new TextField();
+//        hoTenField.setPromptText("Họ tên");
+//        TextField ngaySinhField = new TextField();
+//        ngaySinhField.setPromptText("Ngày sinh (yyyy-MM-dd)");
+//
+//        // Thay TextField giới tính bằng ChoiceBox
+//        ChoiceBox<String> gioiTinhChoice = new ChoiceBox<>();
+//        gioiTinhChoice.getItems().addAll("Nam", "Nu");
+//        gioiTinhChoice.getSelectionModel().selectFirst(); // Mặc định chọn "Nam"
+//
+//        TextField danTocField = new TextField();
+//        danTocField.setPromptText("Dân tộc");
+//        TextField cccdField = new TextField();
+//        cccdField.setPromptText("CCCD");
+//        TextField ngheNghiepField = new TextField();
+//        ngheNghiepField.setPromptText("Nghề nghiệp");
+//
+//        grid.add(new Label("Mã hộ:"), 0, 0);
+//        grid.add(maHoField, 1, 0);
+//        grid.add(new Label("Họ tên:"), 0, 1);
+//        grid.add(hoTenField, 1, 1);
+//        grid.add(new Label("Ngày sinh:"), 0, 2);
+//        grid.add(ngaySinhField, 1, 2);
+//        grid.add(new Label("Giới tính:"), 0, 3);
+//        grid.add(gioiTinhChoice, 1, 3);
+//        grid.add(new Label("Dân tộc:"), 0, 4);
+//        grid.add(danTocField, 1, 4);
+//        grid.add(new Label("CCCD:"), 0, 5);
+//        grid.add(cccdField, 1, 5);
+//        grid.add(new Label("Nghề nghiệp:"), 0, 6);
+//        grid.add(ngheNghiepField, 1, 6);
+//
+//        dialog.getDialogPane().setContent(grid);
+//
+//        dialog.setResultConverter(dialogButton -> {
+//            if (dialogButton == addButtonType) {
+//                try {
+//                    LocalDate ngaySinh = LocalDate.parse(ngaySinhField.getText().trim());
+//                    return new NhanKhau(0,
+//                            maHoField.getText().trim(),
+//                            hoTenField.getText().trim(),
+//                            ngaySinh,
+//                            gioiTinhChoice.getValue(),  // Lấy giá trị giới tính từ ChoiceBox
+//                            danTocField.getText().trim(),
+//                            cccdField.getText().trim(),
+//                            ngheNghiepField.getText().trim());
+//                } catch (Exception e) {
+//                    showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Ngày sinh phải đúng định dạng yyyy-MM-dd");
+//                    return null;
+//                }
+//            }
+//            return null;
+//        });
+//
+//        Optional<NhanKhau> result = dialog.showAndWait();
+//
+//        result.ifPresent(nk -> {
+//            try (Connection conn = DatabaseConnection.getConnection()) {
+//                String sql = "INSERT INTO nhankhau (hoten, ngaysinh, gioitinh, dantoc, cccd, nghenghiep) VALUES (?, ?, ?, ?, ?, ?)";
+//                PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//                ps.setString(1, nk.getHoTen());
+//                ps.setDate(2, Date.valueOf(nk.getNgaySinh()));
+//                ps.setString(3, nk.getGioiTinh());
+//                ps.setString(4, nk.getDanToc());
+//                ps.setString(5, nk.getCccd());
+//                ps.setString(6, nk.getNgheNghiep());
+//                ps.executeUpdate();
+//
+//                ResultSet rs = ps.getGeneratedKeys();
+//                if (rs.next()) {
+//                    int newId = rs.getInt(1);
+//
+//                    // Chèn thêm vào bảng liên kết thanhvien_hokhau
+//                    String sql2 = "INSERT INTO thanhvien_hokhau (hokhau_id, nhankhau_id, ngaythem, quanhevoichuho) VALUES (?, ?, ?, ?)";
+//                    PreparedStatement ps2 = conn.prepareStatement(sql2);
+//                    ps2.setString(1, nk.getMaHo());
+//                    ps2.setInt(2, newId);
+//                    ps2.setDate(3, new Date(System.currentTimeMillis()));
+//                    ps2.setString(4, "Thành viên");
+//                    ps2.executeUpdate();
+//
+//                    showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã thêm nhân khẩu mới!");
+//                    loadData();
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//                showAlert(Alert.AlertType.ERROR, "Lỗi DB", "Không thể thêm nhân khẩu mới: " + e.getMessage());
+//            }
+//        });
+//    }
 
 
 //router

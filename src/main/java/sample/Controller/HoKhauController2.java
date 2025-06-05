@@ -203,92 +203,92 @@ public class HoKhauController2 {
     }
 
 
-    @FXML
-    private void onAdd(ActionEvent event) {
-        Dialog<HoKhau> dialog = new Dialog<>();
-        dialog.setTitle("Thêm mới hộ khẩu");
-        dialog.setHeaderText("Nhập thông tin hộ khẩu");
-
-        ButtonType addButtonType = new ButtonType("Thêm", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
-
-        TextField soHoKhauField = new TextField();
-        soHoKhauField.setPromptText("Số hộ khẩu");
-        TextField soNhaField = new TextField();
-        soNhaField.setPromptText("Số nhà");
-        TextField duongField = new TextField();
-        duongField.setPromptText("Đường");
-        TextField phuongField = new TextField();
-        phuongField.setPromptText("Phường");
-        TextField quanField = new TextField();
-        quanField.setPromptText("Quận");
-
-        DatePicker ngayLamHoKhauPicker = new DatePicker();
-        ngayLamHoKhauPicker.setPromptText("Ngày làm hộ khẩu");
-
-        grid.add(new Label("Số hộ khẩu:"), 0, 0);
-        grid.add(soHoKhauField, 1, 0);
-        grid.add(new Label("Số nhà:"), 0, 1);
-        grid.add(soNhaField, 1, 1);
-        grid.add(new Label("Đường:"), 0, 2);
-        grid.add(duongField, 1, 2);
-        grid.add(new Label("Phường:"), 0, 3);
-        grid.add(phuongField, 1, 3);
-        grid.add(new Label("Quận:"), 0, 4);
-        grid.add(quanField, 1, 4);
-        grid.add(new Label("Ngày làm hộ khẩu:"), 0, 5);
-        grid.add(ngayLamHoKhauPicker, 1, 5);
-
-
-        dialog.getDialogPane().setContent(grid);
-
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == addButtonType) {
-                try {
-                    int soHoKhau = Integer.parseInt(soHoKhauField.getText().trim());
-                    String soNha = soNhaField.getText().trim();
-                    String duong = duongField.getText().trim();
-                    String phuong = phuongField.getText().trim();
-                    String quan = quanField.getText().trim();
-                    LocalDate ngayLamHoKhau = ngayLamHoKhauPicker.getValue();
-
-                    return new HoKhau(soHoKhau, soNha, duong, phuong, quan, ngayLamHoKhau);
-                } catch (Exception e) {
-                    showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Vui lòng kiểm tra lại định dạng dữ liệu.");
-                    return null;
-                }
-            }
-            return null;
-        });
-
-
-        Optional<HoKhau> result = dialog.showAndWait();
-
-        result.ifPresent(nk -> {
-            try (Connection conn = DatabaseConnection.getConnection()) {
-                String sql = "INSERT INTO hokhau (sohokhau, sonha, duong, phuong, quan, ngaylamhokhau) VALUES (?, ?, ?, ?, ?, ?)";
-                PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, nk.getSoHoKhau());
-                ps.setString(2, nk.getSoNha());
-                ps.setString(3, nk.getDuong());
-                ps.setString(4, nk.getPhuong());
-                ps.setString(5, nk.getQuan());
-                ps.setDate(6, Date.valueOf(nk.getNgayLamHoKhau()));
-                ps.executeUpdate();
-                showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã thêm hộ khẩu mới!");
-                loadData();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                showAlert(Alert.AlertType.ERROR, "Lỗi DB", "Không thể thêm hộ khẩu mới: " + e.getMessage());
-            }
-        });
-    }
+//    @FXML
+//    private void onAdd(ActionEvent event) {
+//        Dialog<HoKhau> dialog = new Dialog<>();
+//        dialog.setTitle("Thêm mới hộ khẩu");
+//        dialog.setHeaderText("Nhập thông tin hộ khẩu");
+//
+//        ButtonType addButtonType = new ButtonType("Thêm", ButtonBar.ButtonData.OK_DONE);
+//        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+//
+//        GridPane grid = new GridPane();
+//        grid.setHgap(10);
+//        grid.setVgap(10);
+//        grid.setPadding(new Insets(20, 150, 10, 10));
+//
+//        TextField soHoKhauField = new TextField();
+//        soHoKhauField.setPromptText("Số hộ khẩu");
+//        TextField soNhaField = new TextField();
+//        soNhaField.setPromptText("Số nhà");
+//        TextField duongField = new TextField();
+//        duongField.setPromptText("Đường");
+//        TextField phuongField = new TextField();
+//        phuongField.setPromptText("Phường");
+//        TextField quanField = new TextField();
+//        quanField.setPromptText("Quận");
+//
+//        DatePicker ngayLamHoKhauPicker = new DatePicker();
+//        ngayLamHoKhauPicker.setPromptText("Ngày làm hộ khẩu");
+//
+//        grid.add(new Label("Số hộ khẩu:"), 0, 0);
+//        grid.add(soHoKhauField, 1, 0);
+//        grid.add(new Label("Số nhà:"), 0, 1);
+//        grid.add(soNhaField, 1, 1);
+//        grid.add(new Label("Đường:"), 0, 2);
+//        grid.add(duongField, 1, 2);
+//        grid.add(new Label("Phường:"), 0, 3);
+//        grid.add(phuongField, 1, 3);
+//        grid.add(new Label("Quận:"), 0, 4);
+//        grid.add(quanField, 1, 4);
+//        grid.add(new Label("Ngày làm hộ khẩu:"), 0, 5);
+//        grid.add(ngayLamHoKhauPicker, 1, 5);
+//
+//
+//        dialog.getDialogPane().setContent(grid);
+//
+//        dialog.setResultConverter(dialogButton -> {
+//            if (dialogButton == addButtonType) {
+//                try {
+//                    int soHoKhau = Integer.parseInt(soHoKhauField.getText().trim());
+//                    String soNha = soNhaField.getText().trim();
+//                    String duong = duongField.getText().trim();
+//                    String phuong = phuongField.getText().trim();
+//                    String quan = quanField.getText().trim();
+//                    LocalDate ngayLamHoKhau = ngayLamHoKhauPicker.getValue();
+//
+//                    return new HoKhau(soHoKhau, soNha, duong, phuong, quan, ngayLamHoKhau);
+//                } catch (Exception e) {
+//                    showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Vui lòng kiểm tra lại định dạng dữ liệu.");
+//                    return null;
+//                }
+//            }
+//            return null;
+//        });
+//
+//
+//        Optional<HoKhau> result = dialog.showAndWait();
+//
+//        result.ifPresent(nk -> {
+//            try (Connection conn = DatabaseConnection.getConnection()) {
+//                String sql = "INSERT INTO hokhau (sohokhau, sonha, duong, phuong, quan, ngaylamhokhau) VALUES (?, ?, ?, ?, ?, ?)";
+//                PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//                ps.setInt(1, nk.getSoHoKhau());
+//                ps.setString(2, nk.getSoNha());
+//                ps.setString(3, nk.getDuong());
+//                ps.setString(4, nk.getPhuong());
+//                ps.setString(5, nk.getQuan());
+//                ps.setDate(6, Date.valueOf(nk.getNgayLamHoKhau()));
+//                ps.executeUpdate();
+//                showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã thêm hộ khẩu mới!");
+//                loadData();
+//
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//                showAlert(Alert.AlertType.ERROR, "Lỗi DB", "Không thể thêm hộ khẩu mới: " + e.getMessage());
+//            }
+//        });
+//    }
 
 
     //router
