@@ -1,14 +1,12 @@
 package main.java.sample.Model;
 
-import javafx.beans.property.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class HoKhau {
     private int soHoKhau;
     private String soNha;
-    private BigDecimal dienTich;
+    private BigDecimal area;
     private String duong;
     private String phuong;
     private String quan;
@@ -17,19 +15,19 @@ public class HoKhau {
     public HoKhau(int soHoKhau, String soNha, String duong, String phuong, String quan, LocalDate ngayLamHoKhau, BigDecimal dienTich) {
         this.soHoKhau = soHoKhau;
         this.soNha = soNha;
-        this.dienTich = dienTich;
+        this.area = dienTich;
         this.duong = duong;
         this.phuong = phuong;
         this.quan = quan;
         this.ngayLamHoKhau = ngayLamHoKhau;
     }
 
-    public BigDecimal getDienTich() {
-        return dienTich;
+    public BigDecimal getArea() {
+        return area;
     }
 
-    public void setDienTich(BigDecimal dienTich) {
-        this.dienTich = dienTich;
+    public void setArea(BigDecimal area) {
+        this.area = area;
     }
 
     public int getSoHoKhau() {

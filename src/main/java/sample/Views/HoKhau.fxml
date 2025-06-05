@@ -64,7 +64,7 @@
                     </TableColumn>
                     <TableColumn fx:id="colDienTich" prefWidth="150.0" text="Diện tích">
                         <cellValueFactory>
-                            <PropertyValueFactory property="dientich" />
+                            <PropertyValueFactory property="area" />
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn fx:id="colDuong" prefWidth="156.79998779296875" text="Đường">

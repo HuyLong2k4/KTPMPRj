@@ -194,6 +194,7 @@ public class HoKhauController {
         TextField soHoKhauField = new TextField(String.valueOf(hk.getSoHoKhau()));
         soHoKhauField.setDisable(true); // không cho phép chỉnh sửa số hộ khẩu
         TextField soNhaField = new TextField(hk.getSoNha());
+        TextField areaField = new TextField(hk.getArea().toPlainString());
         TextField duongField = new TextField(hk.getDuong());
         TextField phuongField = new TextField(hk.getPhuong());
         TextField quanField = new TextField(hk.getQuan());
@@ -203,6 +204,8 @@ public class HoKhauController {
         grid.add(soHoKhauField, 1, 0);
         grid.add(new Label("Số nhà:"), 0, 1);
         grid.add(soNhaField, 1, 1);
+        grid.add(new Label("Diện tích:"), 0, 2);
+        grid.add(areaField, 1, 2);
         grid.add(new Label("Đường:"), 0, 2);
         grid.add(duongField, 1, 2);
         grid.add(new Label("Phường:"), 0, 3);
@@ -223,7 +226,8 @@ public class HoKhauController {
                             duongField.getText().trim(),
                             phuongField.getText().trim(),
                             quanField.getText().trim(),
-                            ngayLamHoKhauPicker.getValue()
+                            ngayLamHoKhauPicker.getValue(),
+                            new BigDecimal(areaField.getText().trim())
                     );
                 } catch (Exception e) {
                     showAlert(Alert.AlertType.ERROR, "Lỗi dữ liệu", "Vui lòng kiểm tra lại thông tin nhập.");
@@ -237,9 +241,10 @@ public class HoKhauController {
 
         result.ifPresent(updatedHK -> {
             try (Connection conn = DatabaseConnection.getConnection()) {
-                String sql = "UPDATE hokhau SET sonha=?, duong=?, phuong=?, quan=?, ngaylamhokhau=? WHERE sohokhau=?";
+                String sql = "UPDATE hokhau SET sonha=?, area=?, duong=?, phuong=?, quan=?, ngaylamhokhau=? WHERE sohokhau=?";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, updatedHK.getSoNha());
+                ps.setBigDecimal(2, updatedHK.getArea());
                 ps.setString(2, updatedHK.getDuong());
                 ps.setString(3, updatedHK.getPhuong());
                 ps.setString(4, updatedHK.getQuan());
@@ -310,7 +315,7 @@ public class HoKhauController {
         TextField soNhaField = new TextField();
         soNhaField.setPromptText("Số nhà");
         TextField dienTichField = new TextField();
-        soNhaField.setPromptText("Diện tích");
+        dienTichField.setPromptText("Diện tích");
         TextField duongField = new TextField();
         duongField.setPromptText("Đường");
         TextField phuongField = new TextField();
@@ -372,7 +377,7 @@ public class HoKhauController {
                 ps.setString(4, nk.getPhuong());
                 ps.setString(5, nk.getQuan());
                 ps.setDate(6, Date.valueOf(nk.getNgayLamHoKhau()));
-                ps.setBigDecimal(7, nk.getDienTich());
+                ps.setBigDecimal(7, nk.getArea());
                 ps.executeUpdate();
                 showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã thêm hộ khẩu mới!");
                 loadData();
