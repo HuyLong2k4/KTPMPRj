@@ -22,13 +22,13 @@
             <Insets bottom="15" left="15" right="15" top="15" />
          </padding>
          <children>
-            <Label fx:id="lblTrangChu"  style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" text="Trang chủ" />
-            <Label fx:id="lblHoKhau" onMouseClicked="#handleHoKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Hộ khẩu" />
-            <Label fx:id="lblNhanKhau" onMouseClicked="#handleNhanKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nhân khẩu" />
-            <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Khoản thu" />
-            <Label fx:id="lblNopPhi" onMouseClicked="#handleNopPhiClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nộp Phí" />
-            <Label fx:id="lblThongKe" onMouseClicked="#handleThongKeClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Thống kê" />
-            <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm...">
+            <Label fx:id="lblTrangChu"  style="-fx-font-weight: bold; -fx-text-fill: #2980b9; -fx-font-family: 'Arial', 'Segoe UI', sans-serif;" text="Trang chủ" />
+            <Label fx:id="lblHoKhau" onMouseClicked="#handleHoKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial', 'Segoe UI', sans-serif;" text="Hộ khẩu" />
+            <Label fx:id="lblNhanKhau" onMouseClicked="#handleNhanKhauClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial', 'Segoe UI', sans-serif;" text="Nhân khẩu" />
+            <Label fx:id="lblKhoanThu" onMouseClicked="#handleKhoanThuClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial', 'Segoe UI', sans-serif;" text="Khoản thu" />
+            <Label fx:id="lblNopPhi" onMouseClicked="#handleNopPhiClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial', 'Segoe UI', sans-serif;" text="Nộp Phí" />
+            <Label fx:id="lblThongKe" onMouseClicked="#handleThongKeClick" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial', 'Segoe UI', sans-serif;" text="Thống kê" />
+            <TextField fx:id="txtGlobalSearch" prefHeight="25.0" prefWidth="299.0" promptText="Tìm kiếm..." style="-fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;">
                <HBox.margin><Insets left="120.0" /></HBox.margin>
             </TextField>
 
@@ -57,7 +57,7 @@
                   <font>
                      <Font size="16.0" />
                   </font></Label>
-               <Button fx:id="btnHoKhau" onMouseClicked="#handleHoKhauClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnHoKhau" onMouseClicked="#handleHoKhauClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Xem tất cả">
                   <font>
                      <Font size="20.0" />
                   </font></Button>
@@ -77,7 +77,7 @@
                   <font>
                      <Font size="16.0" />
                   </font></Label>
-               <Button fx:id="btnNhanKhau" onMouseClicked="#handleNhanKhauClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnNhanKhau" onMouseClicked="#handleNhanKhauClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Xem tất cả">
                   <font>
                      <Font size="20.0" />
                   </font></Button>
@@ -97,7 +97,7 @@
                   <font>
                      <Font size="16.0" />
                   </font></Label>
-               <Button fx:id="btnKhoanThu" onMouseClicked="#handleKhoanThuClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Xem tất cả">
+               <Button fx:id="btnKhoanThu" onMouseClicked="#handleKhoanThuClickBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Xem tất cả">
                   <font>
                      <Font size="20.0" />
                   </font></Button>
@@ -143,8 +143,8 @@
          <padding>
             <Insets bottom="15" left="15" right="15" top="15" />
          </padding>
-         <Button fx:id="btnDSNopPhi" onMouseClicked="#handleDSNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Danh sách nộp phí" />
-         <Button fx:id="btnNopPhi" onMouseClicked="#handleNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Nộp phí" />
+         <Button fx:id="btnDSNopPhi" onMouseClicked="#handleDSNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Danh sách nộp phí" />
+         <Button fx:id="btnNopPhi" onMouseClicked="#handleNopPhiClickBtn" prefWidth="150" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-family: 'Arial', 'Segoe UI', sans-serif; -fx-font-size: 15px;" text="Nộp phí" />
       </HBox>
    </bottom>
 
