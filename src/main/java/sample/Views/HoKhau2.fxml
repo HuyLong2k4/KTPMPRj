@@ -82,7 +82,7 @@
                             <PropertyValueFactory property="ngaylamhokhau" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colAction" prefWidth="107.2000732421875" text="Action" />
+<!--                    <TableColumn fx:id="colAction" prefWidth="107.2000732421875" text="Action" />-->
                 </columns>
             </TableView>
 

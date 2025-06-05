@@ -72,7 +72,7 @@ public class HoKhauController2 {
                 }
             }
         });
-        addButtonToTable();
+        //addButtonToTable();
         loadData();
     }
 
@@ -136,6 +136,7 @@ public class HoKhauController2 {
     @FXML
     private TableColumn<HoKhau, Void> colAction;
 
+/*
     private void addButtonToTable() {
         colAction.setCellFactory(param -> new TableCell<HoKhau, Void>() {
             private final Button btnEdit = new Button("Sửa");
@@ -201,6 +202,7 @@ public class HoKhauController2 {
             }
         });
     }
+*/
 
 
 //    @FXML

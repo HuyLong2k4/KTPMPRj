@@ -80,7 +80,7 @@ public class NhanKhauController2 {
                 }
             }
         });
-        addButtonToTable();
+        //addButtonToTable();
         loadData();
     }
 
@@ -147,6 +147,8 @@ public class NhanKhauController2 {
     @FXML
     private TableColumn<NhanKhau, Void> colAction;
 
+
+/*
     private void addButtonToTable() {
         colAction.setCellFactory(param -> new TableCell<NhanKhau, Void>() {
             private final Button btnEdit = new Button("Sửa");
@@ -304,6 +306,8 @@ public class NhanKhauController2 {
             }
         });
     }
+*/
+
 
 
 //    @FXML

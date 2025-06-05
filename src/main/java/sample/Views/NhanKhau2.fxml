@@ -92,7 +92,7 @@
                             <PropertyValueFactory property="ngheNghiep" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="colAction" prefWidth="95.0" text="Action" />
+                    <!--<TableColumn fx:id="colAction" prefWidth="95.0" text="Action" />-->
                 </columns>
             </TableView>
 
