@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import main.java.sample.Model.HoKhau;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +32,9 @@ public class HoKhauController2 {
 
     @FXML
     private TableColumn<HoKhau, String> colSoNha;
+
+    @FXML
+    private TableColumn<HoKhau, BigDecimal> colDienTich;
 
     @FXML
     private TableColumn<HoKhau, String> colDuong;
@@ -53,6 +57,7 @@ public class HoKhauController2 {
     public void initialize() {
         colSoHoKhau.setCellValueFactory(new PropertyValueFactory<>("soHoKhau"));
         colSoNha.setCellValueFactory(new PropertyValueFactory<>("soNha"));
+        colDienTich.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
         colDuong.setCellValueFactory(new PropertyValueFactory<>("duong"));
         colPhuong.setCellValueFactory(new PropertyValueFactory<>("phuong"));
         colQuan.setCellValueFactory(new PropertyValueFactory<>("quan"));
@@ -92,8 +97,9 @@ public class HoKhauController2 {
                 String quan = rs.getString("quan");
                 Date sqlDate = rs.getDate("ngaylamhokhau");
                 LocalDate ngayLamHoKhau = sqlDate != null ? sqlDate.toLocalDate() : null;
+                BigDecimal area = rs.getBigDecimal("area");
 
-                HoKhau nk = new HoKhau(sohokhau, sonha, duong, phuong, quan, ngayLamHoKhau);
+                HoKhau nk = new HoKhau(sohokhau, sonha, duong, phuong, quan, ngayLamHoKhau, area);
                 hoKhauList.add(nk);
             }
 

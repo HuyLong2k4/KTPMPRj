@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.geometry.Insets;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import database.DatabaseConnection;
@@ -38,6 +39,9 @@ public class HoKhauController {
     private TableColumn<HoKhau, String> colSoNha;
 
     @FXML
+    private TableColumn<HoKhau, BigDecimal> colDienTich;
+
+    @FXML
     private TableColumn<HoKhau, String> colDuong;
 
     @FXML
@@ -58,6 +62,7 @@ public class HoKhauController {
     public void initialize() {
         colSoHoKhau.setCellValueFactory(new PropertyValueFactory<>("soHoKhau"));
         colSoNha.setCellValueFactory(new PropertyValueFactory<>("soNha"));
+        colDienTich.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
         colDuong.setCellValueFactory(new PropertyValueFactory<>("duong"));
         colPhuong.setCellValueFactory(new PropertyValueFactory<>("phuong"));
         colQuan.setCellValueFactory(new PropertyValueFactory<>("quan"));
@@ -97,8 +102,9 @@ public class HoKhauController {
                 String quan = rs.getString("quan");
                 Date sqlDate = rs.getDate("ngaylamhokhau");
                 LocalDate ngayLamHoKhau = sqlDate != null ? sqlDate.toLocalDate() : null;
+                BigDecimal area = rs.getBigDecimal("area");
 
-                HoKhau nk = new HoKhau(sohokhau, sonha, duong, phuong, quan, ngayLamHoKhau);
+                HoKhau nk = new HoKhau(sohokhau, sonha, duong, phuong, quan, ngayLamHoKhau, area);
                 hoKhauList.add(nk);
             }
 
@@ -226,6 +232,8 @@ public class HoKhauController {
         soHoKhauField.setPromptText("Số hộ khẩu");
         TextField soNhaField = new TextField();
         soNhaField.setPromptText("Số nhà");
+        TextField dienTichField = new TextField();
+        soNhaField.setPromptText("Diện tích");
         TextField duongField = new TextField();
         duongField.setPromptText("Đường");
         TextField phuongField = new TextField();
@@ -248,6 +256,8 @@ public class HoKhauController {
         grid.add(quanField, 1, 4);
         grid.add(new Label("Ngày làm hộ khẩu:"), 0, 5);
         grid.add(ngayLamHoKhauPicker, 1, 5);
+        grid.add(new Label("Diện tích:"), 0, 6);
+        grid.add(dienTichField, 1, 6);
 
 
         dialog.getDialogPane().setContent(grid);
@@ -257,12 +267,13 @@ public class HoKhauController {
                 try {
                     int soHoKhau = Integer.parseInt(soHoKhauField.getText().trim());
                     String soNha = soNhaField.getText().trim();
+                    BigDecimal dienTich = new BigDecimal(dienTichField.getText().trim());
                     String duong = duongField.getText().trim();
                     String phuong = phuongField.getText().trim();
                     String quan = quanField.getText().trim();
                     LocalDate ngayLamHoKhau = ngayLamHoKhauPicker.getValue();
 
-                    return new HoKhau(soHoKhau, soNha, duong, phuong, quan, ngayLamHoKhau);
+                    return new HoKhau(soHoKhau, soNha, duong, phuong, quan, ngayLamHoKhau, dienTich);
                 } catch (Exception e) {
                     showAlert(Alert.AlertType.ERROR, "Lỗi nhập liệu", "Vui lòng kiểm tra lại định dạng dữ liệu.");
                     return null;
@@ -276,7 +287,7 @@ public class HoKhauController {
 
         result.ifPresent(nk -> {
             try (Connection conn = DatabaseConnection.getConnection()) {
-                String sql = "INSERT INTO hokhau (sohokhau, sonha, duong, phuong, quan, ngaylamhokhau) VALUES (?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO hokhau (sohokhau, sonha, duong, phuong, quan, ngaylamhokhau, area) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, nk.getSoHoKhau());
                 ps.setString(2, nk.getSoNha());
@@ -284,6 +295,7 @@ public class HoKhauController {
                 ps.setString(4, nk.getPhuong());
                 ps.setString(5, nk.getQuan());
                 ps.setDate(6, Date.valueOf(nk.getNgayLamHoKhau()));
+                ps.setBigDecimal(7, nk.getDienTich());
                 ps.executeUpdate();
                 showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã thêm hộ khẩu mới!");
                 loadData();

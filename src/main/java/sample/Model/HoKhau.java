@@ -2,23 +2,34 @@ package main.java.sample.Model;
 
 import javafx.beans.property.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class HoKhau {
     private int soHoKhau;
     private String soNha;
+    private BigDecimal dienTich;
     private String duong;
     private String phuong;
     private String quan;
     private LocalDate ngayLamHoKhau;
 
-    public HoKhau(int soHoKhau, String soNha, String duong, String phuong, String quan, LocalDate ngayLamHoKhau) {
+    public HoKhau(int soHoKhau, String soNha, String duong, String phuong, String quan, LocalDate ngayLamHoKhau, BigDecimal dienTich) {
         this.soHoKhau = soHoKhau;
         this.soNha = soNha;
+        this.dienTich = dienTich;
         this.duong = duong;
         this.phuong = phuong;
         this.quan = quan;
         this.ngayLamHoKhau = ngayLamHoKhau;
+    }
+
+    public BigDecimal getDienTich() {
+        return dienTich;
+    }
+
+    public void setDienTich(BigDecimal dienTich) {
+        this.dienTich = dienTich;
     }
 
     public int getSoHoKhau() {
