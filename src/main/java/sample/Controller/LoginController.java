@@ -47,7 +47,7 @@ public class LoginController {
                 String role = rs.getString("vaitro");
                 FXMLLoader loader;
                 if("to_truong".equals(role)) {
-                     loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+                     loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HomePage.fxml"));
                 } else if ("ke_toan".equals(role)) {
                      loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HomePage2.fxml"));
                 } else {

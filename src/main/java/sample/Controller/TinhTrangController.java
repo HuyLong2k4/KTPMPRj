@@ -310,7 +310,7 @@ private Label lblTrangChu;
     @FXML
     public void handleHomePageClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Controller/HomePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HomePage.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblTrangChu.getScene().getWindow();

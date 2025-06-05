@@ -341,7 +341,7 @@ private Label lblTrangChu;
     @FXML
     public void handleHomePageClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Controller/HomePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HomePage2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblTrangChu.getScene().getWindow();
@@ -360,7 +360,7 @@ private Label lblTrangChu;
     @FXML
     public void handleNhanKhauClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblNhanKhau.getScene().getWindow();
@@ -379,7 +379,7 @@ private Label lblTrangChu;
     @FXML
     public void handleHoKhauClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblHoKhau.getScene().getWindow();
@@ -398,7 +398,7 @@ private Label lblTrangChu;
     @FXML
     public void handleThongKeClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKe.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKe2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblThongKe.getScene().getWindow();
@@ -411,18 +411,20 @@ private Label lblTrangChu;
 
         }
     }
-    @FXML
-    private Label lblTinhTrangLuuTru;
+
 
     @FXML
-    public void handleTinhTrangClick() {
+    private Label lblNopPhi;
+
+    @FXML
+    public void handleNopPhiClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TinhTrangLuuTru.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NopPhi.fxml"));
             Parent canHoPage = loader.load();
 
-            Stage stage = (Stage) lblTinhTrangLuuTru.getScene().getWindow();
+            Stage stage = (Stage) lblNopPhi.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
-            stage.setTitle("Quan ly Thống Kê");
+            stage.setTitle("Quan ly Nop Phi");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class HomePageController {
+public class HomePageController2 {
 
     @FXML
     private Label lblTongSoHoKhau;
@@ -64,14 +64,14 @@ public class HomePageController {
     }
 
 
-//    router button
+    //    router button
     @FXML
     private Button btnNhanKhau;
 
     @FXML
     public void handleNhanKhauClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NhanKhau2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) btnNhanKhau.getScene().getWindow();
@@ -104,7 +104,7 @@ public class HomePageController {
     }
 
 
-//    router
+    //    router
     @FXML
     private Label lblNhanKhau;
 
@@ -124,24 +124,24 @@ public class HomePageController {
         }
     }
 
-//    @FXML
-//    private Label lblKhoanThu;
-//
-//    @FXML
-//    public void handleKhoanThuClick() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
-//            Parent canHoPage = loader.load();
-//
-//            Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
-//            stage.setScene(new Scene(canHoPage));
-//            stage.setTitle("Quan ly Khoản Thu");
-//            stage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            showAlert("Lỗi chuyển trang: " + e.getMessage());
-//        }
-//    }
+    @FXML
+    private Label lblKhoanThu;
+
+    @FXML
+    public void handleKhoanThuClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Khoản Thu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
 
     @FXML
     private Label lblHoKhau;
@@ -149,7 +149,7 @@ public class HomePageController {
     @FXML
     public void handleHoKhauClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblHoKhau.getScene().getWindow();
@@ -168,7 +168,7 @@ public class HomePageController {
     @FXML
     public void handleHoKhauClickBtn() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HoKhau2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) btnHoKhau.getScene().getWindow();
@@ -225,7 +225,7 @@ public class HomePageController {
     @FXML
     public void handleThongKeClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKe.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThongKe2.fxml"));
             Parent canHoPage = loader.load();
 
             Stage stage = (Stage) lblThongKe.getScene().getWindow();
@@ -239,23 +239,42 @@ public class HomePageController {
     }
 
     @FXML
-    private Label lblTinhTrangLuuTru;
+    private Label lblNopPhi;
 
     @FXML
-    public void handleTinhTrangClick() {
+    public void handleNopPhiClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TinhTrangLuuTru.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NopPhi.fxml"));
             Parent canHoPage = loader.load();
 
-            Stage stage = (Stage) lblTinhTrangLuuTru.getScene().getWindow();
+            Stage stage = (Stage) lblNopPhi.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
-            stage.setTitle("Quan lý Tình Trạng Lưu Trú");
+            stage.setTitle("Quan lý Thống Kê");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Lỗi chuyển trang: " + e.getMessage());
         }
     }
+
+//    @FXML
+//    private Label lblTinhTrangLuuTru;
+//
+//    @FXML
+//    public void handleTinhTrangClick() {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/TinhTrangLuuTru.fxml"));
+//            Parent canHoPage = loader.load();
+//
+//            Stage stage = (Stage) lblTinhTrangLuuTru.getScene().getWindow();
+//            stage.setScene(new Scene(canHoPage));
+//            stage.setTitle("Quan lý Tình Trạng Lưu Trú");
+//            stage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            showAlert("Lỗi chuyển trang: " + e.getMessage());
+//        }
+//    }
 
 
     private void showAlert(String msg) {

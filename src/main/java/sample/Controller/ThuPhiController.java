@@ -50,7 +50,7 @@ public class ThuPhiController {
     @FXML
     private void onQuayLaiClicked(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Controller/HomePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/HomePage.fxml"));
             Parent homePage = loader.load();
 
             Stage stage = (Stage) quayLaiBtn.getScene().getWindow();
