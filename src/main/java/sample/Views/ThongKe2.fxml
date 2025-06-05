@@ -75,10 +75,6 @@
         </TableView>
         </VBox>
     </center>
-    <bottom>
-        <HBox alignment="CENTER" spacing="10"><padding><Insets bottom="10" left="10" right="10" top="10" /> </padding>
-            <Button fx:id="btnPdf" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;" text="Tạo PDF" />
-        </HBox>
-    </bottom>
+
 
 </BorderPane>

@@ -128,7 +128,7 @@ public class TinhTrangController {
         TamTruTamVang newItem = showEditDialog(null);
         if (newItem != null) {
             try (Connection conn = DatabaseConnection.getConnection()) {
-                String sql = "INSERT INTO tamtrutamvang (hoTenNhanKhau, trangThai, diaChiTamTruTamVang, thoiGian, noiDungDeNghi) VALUES (?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO tamtrutamvang (nhankhau_id, trangThai, diaChiTamTruTamVang, thoiGian, noiDungDeNghi) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setInt(1, newItem.getNhanKhauId());
                 ps.setString(2, newItem.getTrangThai());
