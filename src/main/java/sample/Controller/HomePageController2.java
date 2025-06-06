@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +16,9 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 
 public class HomePageController2 {
@@ -28,6 +35,7 @@ public class HomePageController2 {
     @FXML
     public void initialize() {
         loadSummaryData();
+        loadLichSuThuPhiChart();
     }
 
     private void loadSummaryData() {
@@ -60,6 +68,51 @@ public class HomePageController2 {
             lblTongSoHoKhau.setText("Lỗi");
             lblTongSoNhanKhau.setText("Lỗi");
             lblTongSoKhoanThu.setText("Lỗi");
+        }
+    }
+
+    @FXML
+    private LineChart<String, Number> lineChartLichSu;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    @FXML
+    private NumberAxis yAxis;
+
+    private void loadLichSuThuPhiChart() {
+        try (Connection conn = database.DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement()) {
+
+            String sql = """
+            SELECT MONTH(ngaynop) as thang, SUM(sotien) as tongthu
+            FROM nop_tien
+            GROUP BY MONTH(ngaynop)
+            ORDER BY MONTH(ngaynop)
+        """;
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName("Lịch sử thu phí");
+
+            while (rs.next()) {
+                int thang = rs.getInt("thang");
+                double tongThu = rs.getDouble("tongthu");
+
+                // Chuyển số tháng sang tên tiếng Việt
+                String thangTen = LocalDate.of(2023, thang, 1)
+                        .getMonth()
+                        .getDisplayName(TextStyle.SHORT, new Locale("vi"));
+
+                series.getData().add(new XYChart.Data<>(thangTen, tongThu));
+            }
+
+            lineChartLichSu.getData().clear();
+            lineChartLichSu.getData().add(series);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

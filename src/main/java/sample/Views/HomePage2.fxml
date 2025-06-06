@@ -165,13 +165,13 @@
             <VBox spacing="10"
                   HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                <Label text="Lịch sử thu phí" />
-               <LineChart title="Payment History"
+               <LineChart fx:id="lineChartLichSu" title="Payment History"
                           VBox.vgrow="ALWAYS">
                   <xAxis>
-                     <CategoryAxis label="Tháng"/>
+                     <CategoryAxis fx:id="xAxis" label="Tháng"/>
                   </xAxis>
                   <yAxis>
-                     <NumberAxis label="Số tiền"/>
+                     <NumberAxis fx:id="yAxis" label="Số tiền"/>
                   </yAxis>
                </LineChart>
             </VBox>
