@@ -62,6 +62,7 @@
                 <TextField fx:id="txtSearch" promptText="Tìm kiếm..." />
                 <Button onAction="#onSearch" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Tìm" />
                 <Button onAction="#onRefresh" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Tải lại" />
+                <Button fx:id="btnNopPhi" onAction="#onAdd" text="Nộp phí"/>
             </HBox>
 
             <!-- Tiêu đề cột -->

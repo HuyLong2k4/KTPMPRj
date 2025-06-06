@@ -153,6 +153,25 @@ public class NopPhiControlller {
             txtSearch.clear();
             loadData("");
         }
+
+    @FXML
+    private Button btnNopPhi;
+
+    @FXML
+    public void onAdd() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/ThuPhi.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) btnNopPhi.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Nộp Phí");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+//            showAlert("Lỗi chuyển trang: " + e.getMessage());
+        }
+    }
 //        @FXML
 //    private Button btnBack;
 
