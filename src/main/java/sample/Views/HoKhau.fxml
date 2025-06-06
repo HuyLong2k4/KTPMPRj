@@ -18,7 +18,7 @@
             prefHeight="600.0" prefWidth="980.0"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.java.sample.Controller.HoKhauController2">
+            fx:controller="main.java.sample.Controller.HoKhauController">
 
     <!-- Top: Navigation -->
     <top>
@@ -140,6 +140,9 @@
                         <cellValueFactory>
                             <PropertyValueFactory property="ngaylamhokhau" />
                         </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colAction" text="Hành động" prefWidth="120.0">
+                        <!-- CellFactory sẽ được gán trong Controller -->
                     </TableColumn>
                 </columns>
             </TableView>

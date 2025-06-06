@@ -85,7 +85,7 @@ public class HoKhauController {
         addButtonToTable();
         loadData();
     }
-
+    @FXML
     private void loadData() {
         hoKhauList.clear();
         String sql = "SELECT * from chungcu.hokhau";
@@ -146,7 +146,7 @@ public class HoKhauController {
 
     @FXML
     private TableColumn<HoKhau, Void> colAction;
-
+    @FXML
     private void addButtonToTable() {
         colAction.setCellFactory(param -> new TableCell<HoKhau, Void>() {
             private final Button btnEdit = new Button("Sửa");
@@ -176,7 +176,7 @@ public class HoKhauController {
             }
         });
     }
-
+    @FXML
     private void onEdit(HoKhau hk) {
         // Hiển thị dialog sửa thông tin hoặc chuyển sang màn hình sửa
         Dialog<HoKhau> dialog = new Dialog<>();
@@ -245,11 +245,11 @@ public class HoKhauController {
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, updatedHK.getSoNha());
                 ps.setBigDecimal(2, updatedHK.getArea());
-                ps.setString(2, updatedHK.getDuong());
-                ps.setString(3, updatedHK.getPhuong());
-                ps.setString(4, updatedHK.getQuan());
-                ps.setDate(5, Date.valueOf(updatedHK.getNgayLamHoKhau()));
-                ps.setInt(6, updatedHK.getSoHoKhau());
+                ps.setString(3, updatedHK.getDuong());
+                ps.setString(4, updatedHK.getPhuong());
+                ps.setString(5, updatedHK.getQuan());
+                ps.setDate(6, Date.valueOf(updatedHK.getNgayLamHoKhau()));
+                ps.setInt(7, updatedHK.getSoHoKhau());
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
@@ -264,7 +264,7 @@ public class HoKhauController {
             }
         });
     }
-
+    @FXML
     private void onDelete(HoKhau nk) {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Xóa nhân khẩu");
@@ -431,25 +431,25 @@ public class HoKhauController {
 
         }
     }
-//    @FXML
-//    private Label lblKhoanThu;
+   @FXML
+    private Label lblKhoanThu;
 
-//    @FXML
-//    public void handleKhoanThuClick() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
-//            Parent canHoPage = loader.load();
-//
-//            Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
-//            stage.setScene(new Scene(canHoPage));
-//            stage.setTitle("Quan ly Khoản Thu");
-//            stage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            showAlert(Alert.AlertType.ERROR, "Lỗi", "Lỗi chuyển trang: " + e.getMessage());
-//
-//        }
-//    }
+    @FXML
+    public void handleKhoanThuClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/KhoanThu.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setTitle("Quan ly Khoản Thu");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Lỗi chuyển trang: " + e.getMessage());
+
+        }
+    }
     @FXML
     private Label lblThongKe;
 
@@ -490,6 +490,27 @@ public class HoKhauController {
 
         }
     }
+    @FXML
+    private Label lblNopPhi;
+
+    @FXML
+    public void handleNopPhiClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/sample/Views/NopPhi.fxml"));
+            Parent canHoPage = loader.load();
+
+            Stage stage = (Stage) lblNopPhi.getScene().getWindow();
+            stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
+            stage.setTitle("Quan ly Nop Phi");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Lỗi chuyển trang: " + e.getMessage());
+
+        }
+    }
+
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
