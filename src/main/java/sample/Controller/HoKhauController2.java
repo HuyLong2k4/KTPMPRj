@@ -57,7 +57,7 @@ public class HoKhauController2 {
     public void initialize() {
         colSoHoKhau.setCellValueFactory(new PropertyValueFactory<>("soHoKhau"));
         colSoNha.setCellValueFactory(new PropertyValueFactory<>("soNha"));
-        colDienTich.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
+        colDienTich.setCellValueFactory(new PropertyValueFactory<>("area"));
         colDuong.setCellValueFactory(new PropertyValueFactory<>("duong"));
         colPhuong.setCellValueFactory(new PropertyValueFactory<>("phuong"));
         colQuan.setCellValueFactory(new PropertyValueFactory<>("quan"));
