@@ -80,6 +80,7 @@ public class HomePageController2 {
     @FXML
     private NumberAxis yAxis;
 
+    @FXML
     private void loadLichSuThuPhiChart() {
         try (Connection conn = database.DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement()) {
@@ -129,6 +130,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) btnNhanKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Nhân Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -148,6 +150,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) btnKhoanThu.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Khoản Thu");
             stage.show();
         } catch (Exception e) {
