@@ -76,6 +76,7 @@ public class HomePageController {
 
             Stage stage = (Stage) btnNhanKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Nhân Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -155,6 +156,7 @@ public class HomePageController {
 
             Stage stage = (Stage) lblHoKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Hộ Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -174,6 +176,7 @@ public class HomePageController {
 
             Stage stage = (Stage) btnHoKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Hộ Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -231,6 +234,7 @@ public class HomePageController {
 
             Stage stage = (Stage) lblThongKe.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Thống Kê");
             stage.show();
         } catch (Exception e) {
@@ -250,6 +254,7 @@ public class HomePageController {
 
             Stage stage = (Stage) lblTinhTrangLuuTru.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Tình Trạng Lưu Trú");
             stage.show();
         } catch (Exception e) {
