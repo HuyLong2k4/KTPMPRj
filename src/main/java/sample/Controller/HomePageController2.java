@@ -116,6 +116,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) lblNhanKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Nhân Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -135,6 +136,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Khoản Thu");
             stage.show();
         } catch (Exception e) {
@@ -154,6 +156,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) lblHoKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Hộ Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -173,6 +176,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) btnHoKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Hộ Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -192,6 +196,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) btnNopPhi.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Nộp Phí");
             stage.show();
         } catch (Exception e) {
@@ -211,6 +216,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) btnDSNopPhi.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Nộp Phí");
             stage.show();
         } catch (Exception e) {
@@ -230,6 +236,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) lblThongKe.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Thống Kê");
             stage.show();
         } catch (Exception e) {
@@ -249,6 +256,7 @@ public class HomePageController2 {
 
             Stage stage = (Stage) lblNopPhi.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan lý Thống Kê");
             stage.show();
         } catch (Exception e) {

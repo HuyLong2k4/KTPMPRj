@@ -430,6 +430,7 @@ public class NhanKhauController2 {
 
             Stage stage = (Stage) lblTrangChu.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Trang Chủ");
             stage.show();
         } catch (Exception e) {
@@ -449,6 +450,7 @@ public class NhanKhauController2 {
 
             Stage stage = (Stage) lblKhoanThu.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Khoản Thu");
             stage.show();
         } catch (Exception e) {
@@ -468,6 +470,7 @@ public class NhanKhauController2 {
 
             Stage stage = (Stage) lblHoKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Hộ Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -487,6 +490,7 @@ public class NhanKhauController2 {
 
             Stage stage = (Stage) lblThongKe.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Thống Kê");
             stage.show();
         } catch (Exception e) {
@@ -507,6 +511,7 @@ public class NhanKhauController2 {
 
             Stage stage = (Stage) lblNopPhi.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Nop Phi");
             stage.show();
         } catch (Exception e) {

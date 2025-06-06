@@ -330,6 +330,7 @@ private Label lblTrangChu;
 
             Stage stage = (Stage) lblTrangChu.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Trang Chủ");
             stage.show();
         } catch (Exception e) {
@@ -368,6 +369,7 @@ private Label lblTrangChu;
 
             Stage stage = (Stage) lblHoKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Hộ Khẩu");
             stage.show();
         } catch (Exception e) {
@@ -387,6 +389,7 @@ private Label lblTrangChu;
 
             Stage stage = (Stage) lblThongKe.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Thống Kê");
             stage.show();
         } catch (Exception e) {
@@ -406,6 +409,7 @@ private Label lblTrangChu;
 
             Stage stage = (Stage) lblNhanKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Nhân Khẩu");
             stage.show();
         } catch (Exception e) {

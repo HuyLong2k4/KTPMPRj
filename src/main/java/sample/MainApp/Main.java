@@ -16,12 +16,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/main/java/sample/Views/HomePage2.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/main/java/sample/Views/LoginWindow.fxml"));
 
             Scene scene = new Scene(root);
             primaryStage.setTitle("Đăng nhập hệ thống");
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
             primaryStage.centerOnScreen();
             primaryStage.show();
 

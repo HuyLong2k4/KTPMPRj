@@ -116,6 +116,7 @@ public class HomePageController {
 
             Stage stage = (Stage) lblNhanKhau.getScene().getWindow();
             stage.setScene(new Scene(canHoPage));
+            stage.setMaximized(true);
             stage.setTitle("Quan ly Nhân Khẩu");
             stage.show();
         } catch (Exception e) {

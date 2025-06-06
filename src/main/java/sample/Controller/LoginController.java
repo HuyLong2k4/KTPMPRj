@@ -58,6 +58,7 @@ public class LoginController {
                 Parent root = loader.load();
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(root));
+                stage.setMaximized(true);
                 stage.setTitle("Trang chính");
                 stage.show();
 
