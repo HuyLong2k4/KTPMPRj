@@ -101,6 +101,9 @@
                 <Button onAction="#onRefresh"
                         style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
                         text="Tải lại" />
+                <Button onAction="#onAdd"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                        text="Thêm mới" />
             </HBox>
 
             <!-- TableView với VBox.vgrow để giãn đều xuống dưới -->
